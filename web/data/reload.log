@@ -1299,3 +1299,102 @@ NameError: name '_token_set_ratio' is not defined
 [2025-08-28 17:15:42] SportEventz: 33
 [2025-08-28 17:15:42] Merged total: 42
 [2025-08-28 17:15:42] OK: JSON written.
+[2025-08-28 19:42:43] Scrape start for 2025-08-28
+[2025-08-28 19:42:43] liveonsat: HTTP 200, bytes=448163, url=https://liveonsat.com/2day.php?start_dd=28&start_mm=08&start_yyyy=2025&end_dd=28&end_mm=08&end_yyyy=2025
+[2025-08-28 19:42:44] sporteventz: HTTP 200, bytes=98239, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F28%2F2025%2000%3A00%3A00
+[2025-08-28 19:42:44] sporteventz: has_rows_marker=True
+[2025-08-28 19:42:44] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-28)
+[2025-08-28 19:42:54] LiveOnSat parsed games: 41
+[2025-08-28 19:42:54] LiveOnSat: 41
+[2025-08-28 19:42:54] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:42:54] SportEventz: 33
+[2025-08-28 19:42:54] Merged total: 43
+[2025-08-28 19:42:54] OK: JSON written.
+[2025-08-28 19:43:25] Scrape start for 2025-08-28
+[2025-08-28 19:43:26] liveonsat: HTTP 200, bytes=448163, url=https://liveonsat.com/2day.php?start_dd=28&start_mm=08&start_yyyy=2025&end_dd=28&end_mm=08&end_yyyy=2025
+[2025-08-28 19:43:26] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F28%2F2025%2000%3A00%3A00
+[2025-08-28 19:43:26] sporteventz: has_rows_marker=True
+[2025-08-28 19:43:26] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-28)
+[2025-08-28 19:43:31] Scrape start for 2025-08-28
+[2025-08-28 19:43:31] liveonsat: HTTP 200, bytes=448163, url=https://liveonsat.com/2day.php?start_dd=28&start_mm=08&start_yyyy=2025&end_dd=28&end_mm=08&end_yyyy=2025
+[2025-08-28 19:43:31] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F28%2F2025%2000%3A00%3A00
+[2025-08-28 19:43:31] sporteventz: has_rows_marker=True
+[2025-08-28 19:43:31] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-28)
+[2025-08-28 19:43:36] LiveOnSat parsed games: 41
+[2025-08-28 19:43:36] LiveOnSat: 41
+[2025-08-28 19:43:37] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:43:37] SportEventz: 33
+[2025-08-28 19:43:37] Merged total: 43
+[2025-08-28 19:43:37] OK: JSON written.
+[2025-08-28 19:43:42] LiveOnSat parsed games: 41
+[2025-08-28 19:43:42] LiveOnSat: 41
+[2025-08-28 19:43:42] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:43:42] SportEventz: 33
+[2025-08-28 19:43:42] Merged total: 43
+[2025-08-28 19:43:42] OK: JSON written.
+[2025-08-28 19:43:43] Scrape start for 2025-08-28
+[2025-08-28 19:43:43] liveonsat: HTTP 200, bytes=448163, url=https://liveonsat.com/2day.php?start_dd=28&start_mm=08&start_yyyy=2025&end_dd=28&end_mm=08&end_yyyy=2025
+[2025-08-28 19:43:43] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F28%2F2025%2000%3A00%3A00
+[2025-08-28 19:43:43] sporteventz: has_rows_marker=True
+[2025-08-28 19:43:43] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-28)
+[2025-08-28 19:43:54] LiveOnSat parsed games: 41
+[2025-08-28 19:43:54] LiveOnSat: 41
+[2025-08-28 19:43:54] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:43:54] SportEventz: 33
+[2025-08-28 19:43:54] Merged total: 43
+[2025-08-28 19:43:54] OK: JSON written.
+[2025-08-28 19:44:06] Scrape start for 2025-08-29
+[2025-08-28 19:44:06] liveonsat: HTTP 200, bytes=665322, url=https://liveonsat.com/2day.php?start_dd=29&start_mm=08&start_yyyy=2025&end_dd=29&end_mm=08&end_yyyy=2025
+[2025-08-28 19:44:07] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F29%2F2025%2000%3A00%3A00
+[2025-08-28 19:44:07] sporteventz: has_rows_marker=True
+[2025-08-28 19:44:07] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-29)
+[2025-08-28 19:44:08] Scrape start for 2025-08-29
+[2025-08-28 19:44:08] liveonsat: HTTP 200, bytes=665321, url=https://liveonsat.com/2day.php?start_dd=29&start_mm=08&start_yyyy=2025&end_dd=29&end_mm=08&end_yyyy=2025
+[2025-08-28 19:44:08] sporteventz: HTTP 200, bytes=98239, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F29%2F2025%2000%3A00%3A00
+[2025-08-28 19:44:08] sporteventz: has_rows_marker=True
+[2025-08-28 19:44:08] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-29)
+[2025-08-28 19:44:17] LiveOnSat parsed games: 60
+[2025-08-28 19:44:17] LiveOnSat: 60
+[2025-08-28 19:44:17] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:44:17] SportEventz: 33
+[2025-08-28 19:44:17] Merged total: 93
+[2025-08-28 19:44:17] OK: JSON written.
+[2025-08-28 19:44:19] LiveOnSat parsed games: 60
+[2025-08-28 19:44:19] LiveOnSat: 60
+[2025-08-28 19:44:19] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:44:19] SportEventz: 33
+[2025-08-28 19:44:19] Merged total: 93
+[2025-08-28 19:44:19] OK: JSON written.
+[2025-08-28 19:44:20] Scrape start for 2025-08-29
+[2025-08-28 19:44:20] liveonsat: HTTP 200, bytes=665322, url=https://liveonsat.com/2day.php?start_dd=29&start_mm=08&start_yyyy=2025&end_dd=29&end_mm=08&end_yyyy=2025
+[2025-08-28 19:44:21] sporteventz: HTTP 200, bytes=98239, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F29%2F2025%2000%3A00%3A00
+[2025-08-28 19:44:21] sporteventz: has_rows_marker=True
+[2025-08-28 19:44:21] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-29)
+[2025-08-28 19:44:31] LiveOnSat parsed games: 60
+[2025-08-28 19:44:31] LiveOnSat: 60
+[2025-08-28 19:44:31] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:44:31] SportEventz: 33
+[2025-08-28 19:44:31] Merged total: 93
+[2025-08-28 19:44:31] OK: JSON written.
+[2025-08-28 19:44:34] Scrape start for 2025-08-29
+[2025-08-28 19:44:34] liveonsat: HTTP 200, bytes=665321, url=https://liveonsat.com/2day.php?start_dd=29&start_mm=08&start_yyyy=2025&end_dd=29&end_mm=08&end_yyyy=2025
+[2025-08-28 19:44:35] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F29%2F2025%2000%3A00%3A00
+[2025-08-28 19:44:35] sporteventz: has_rows_marker=True
+[2025-08-28 19:44:35] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-29)
+[2025-08-28 19:44:45] LiveOnSat parsed games: 60
+[2025-08-28 19:44:45] LiveOnSat: 60
+[2025-08-28 19:44:45] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:44:45] SportEventz: 33
+[2025-08-28 19:44:45] Merged total: 93
+[2025-08-28 19:44:45] OK: JSON written.
+[2025-08-28 19:44:46] Scrape start for 2025-08-29
+[2025-08-28 19:44:46] liveonsat: HTTP 200, bytes=665322, url=https://liveonsat.com/2day.php?start_dd=29&start_mm=08&start_yyyy=2025&end_dd=29&end_mm=08&end_yyyy=2025
+[2025-08-28 19:44:47] sporteventz: HTTP 200, bytes=98240, url=https://sporteventz.com/de/component/magictable?se_module=bW9kX3Nwb3J0ZXZlbnRzX2ZpbHRlcg%3D%3D&se_id=U2NoZWR1bGU%3D&Itemid=0&se_date=08%2F29%2F2025%2000%3A00%3A00
+[2025-08-28 19:44:47] sporteventz: has_rows_marker=True
+[2025-08-28 19:44:47] sporteventz: Selenium fallback -> https://www.sporteventz.com/de/soccer (date=2025-08-29)
+[2025-08-28 19:44:57] LiveOnSat parsed games: 60
+[2025-08-28 19:44:57] LiveOnSat: 60
+[2025-08-28 19:44:57] SportEventz parsed games (tr variant): 33
+[2025-08-28 19:44:57] SportEventz: 33
+[2025-08-28 19:44:57] Merged total: 93
+[2025-08-28 19:44:57] OK: JSON written.
