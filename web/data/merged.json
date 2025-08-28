@@ -1,0 +1,581 @@
+{
+  "date": "2025-09-01",
+  "generated_at": "2025-08-28 17:15:42",
+  "counters": {
+    "LiveOnSat": 9,
+    "SportEventz": 33,
+    "Total": 42
+  },
+  "timezone": "Europe/Vienna (GMT+2)",
+  "games": [
+    {
+      "time_local": "2025-09-01 00:00",
+      "time_display": "00:00",
+      "teams_display": "Barcelona Guayaquil v Universidad Católica",
+      "competition": "Ecuadorian Liga Pro Serie A - Week 27",
+      "channels": [
+        "ECDF 1 en Vivo ($/geo/R) 📺"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 00:30",
+      "time_display": "00:30",
+      "teams_display": "Internacional v Fortaleza",
+      "competition": "Brazilian Série A - Week 22",
+      "channels": [
+        "MATCH! Futbol 3 HD"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 03:45",
+      "time_display": "03:45",
+      "teams_display": "Los Angeles FC v San Diego FC",
+      "competition": "Major League Soccer (MLS) - Week 43",
+      "channels": [
+        "MLS Season Pass [$]"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 16:00",
+      "time_display": "16:00",
+      "teams_display": "CS Corvinul Hunedoara v FC Farul Constanta",
+      "competition": "Rumänien, Cupa Romaniei, Qualification",
+      "channels": [
+        "Digi Sport 1 Romania",
+        "Digi Sport 1 Romania HD",
+        "Prima Sport 1",
+        "Prima Sport 1 HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 16:00",
+      "time_display": "16:00",
+      "teams_display": "Csikszereda v Otelul Galati",
+      "competition": "Romanian Superliga - Week 8",
+      "channels": [
+        "Digi Sport 1 Romania HD",
+        "Prima Sport RO 1 HD",
+        "PrimaPlay [app] 📺"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 17:30",
+      "time_display": "17:30",
+      "teams_display": "Al Rayyan SC v AL Duhail SC",
+      "competition": "Katar, Stars League",
+      "channels": [
+        "Al Kass One HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 18:00",
+      "time_display": "18:00",
+      "teams_display": "AC Omonia Nicosia v Wolfsberger AC",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "ORF 1 Austria",
+        "ORF 1 Austria HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 18:00",
+      "time_display": "18:00",
+      "teams_display": "Arda v Beroe",
+      "competition": "Bulgarian First League - Week 7",
+      "channels": [
+        "Diema Sport HD"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 18:00",
+      "time_display": "18:00",
+      "teams_display": "Esbjerg v HB Køge",
+      "competition": "Danish 1. Division - Week 8",
+      "channels": [
+        "ViaPlay Danmark HD",
+        "ViaPlay Norge HD",
+        "ViaPlay Suomi HD",
+        "ViaPlay Sverige HD"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 18:30",
+      "time_display": "18:30",
+      "teams_display": "Huesca v Eibar",
+      "competition": "Spanish La Liga 2 - Week 3",
+      "channels": [
+        "DAZN España ($/geo/R)",
+        "LaLiga Hypermotion HD"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 18:30",
+      "time_display": "18:30",
+      "teams_display": "SK Sigma Olomouc v Malmö FF",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "MFF Play Premium",
+        "Nova Sport 5 Czechia HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:00",
+      "time_display": "19:00",
+      "teams_display": "Besiktas JK v FC Lausanne-Sport",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Show TV",
+        "Show TV HD",
+        "Sport1 Germany",
+        "Sport1 Germany HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:00",
+      "time_display": "19:00",
+      "teams_display": "Farul Constanta v Petrolul",
+      "competition": "Romanian Superliga - Week 8",
+      "channels": [
+        "Digi Sport 1 Romania HD",
+        "Prima Sport RO 1 HD",
+        "PrimaPlay [app] 📺"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:00",
+      "time_display": "19:00",
+      "teams_display": "Samsunspor v Panathinaikos Athen",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Cosmote Sport 3 HD Greece",
+        "HT Spor Türkiye"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:00",
+      "time_display": "19:00",
+      "teams_display": "SK Rapid Wien v Győri ETO FC",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "M4 Sport Hungary",
+        "M4 Sport Hungary HD",
+        "ORF 1 Austria",
+        "ORF 1 Austria HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "Al-Sadd SC v Al-Gharafa SC",
+      "competition": "Katar, Stars League",
+      "channels": [
+        "Al Kass Two HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "AZ Alkmar v Levski Sofia",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Diema Sport 1 Bulgaria",
+        "Diema Sport 1 Bulgaria HD",
+        "Ziggo Sport 2 Netherlands",
+        "Ziggo Sport 2 Netherlands HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "CS Universitatea Craiova 1948 v Istanbul Basaksehir FK",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Digi Sport 1 Romania",
+        "Digi Sport 1 Romania HD",
+        "Prima Sport 1",
+        "Prima Sport 1 HD",
+        "TRT 1",
+        "TRT 1 HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "FC CFR 1907 Cluj v BK Häcken",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Digi Sport 2 Romania",
+        "Digi Sport 2 Romania HD",
+        "Prima Sport 2",
+        "Prima Sport 2 HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "Ludogorets 1945 Razgrad v FK Shkendija",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Diema sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria HD",
+        "MRT 3"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 19:30",
+      "time_display": "19:30",
+      "teams_display": "PAOK Thessaloniki v HNK Rijeka",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Arena Sport 2 Slovakia",
+        "Arena Sport 2 Slovakia HD",
+        "Max Sport 1 Croatia HD",
+        "Max Sport 2 Croatia HD",
+        "Open Beyond TV",
+        "Open Beyond TV HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "AC Florenz v FC Polissya",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "SKY sport 254 italy",
+        "Sky Sport 254 Italy HD",
+        "Sky Sport Calcio",
+        "Sky Sport Calcio HD",
+        "TV 8 Italia",
+        "TV 8 Italia HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "AEK Athen v RSC Anderlecht",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Cosmote Sport 2 HD Greece"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "Bröndby IF v RC Strasbourg Alsace",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Arena Sport 1 Slovakia HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "BSC Young Boys v SK Slovan Bratislava",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Dajto HD",
+        "SRF Info Switzerland HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "FC Arda Kardzhali v RKS Rakow Czestochowa",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Diema Sport 2 Bulgaria",
+        "Diema Sport 2 Bulgaria HD",
+        "TVP 2 HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "FC Banik Ostrava v NK Celje",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Premier Sport 2 Slovakia HD",
+        "Sport TV 2 Slovenija"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "FC Differdingen 03 v KF Drita",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "ART Sport 1 Albania"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "FC Dynamo Kiew v Maccabi Tel Aviv FC",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "2 Plus 2 Ukraine"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "FC Utrecht v Hsk Zrinjski Mostar",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Ziggo Sport 1 Netherlands HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "KRC Genk v KKS Lech Posen",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Dazn Pro League 1 FR",
+        "Dazn Pro League 1 France HD",
+        "Dazn Pro League 1 Netherlands",
+        "Dazn Pro League 1 NL",
+        "TVP 3 Poland"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:00",
+      "time_display": "20:00",
+      "teams_display": "Rayo Vallecano v Neman Grodno",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Belarus TV 5",
+        "Teledeporte Spain"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:30",
+      "time_display": "20:30",
+      "teams_display": "Fotbal Club FCSB v Aberdeen FC",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "BBC Scotland",
+        "BBC Scotland HD",
+        "Pro TV Romania",
+        "Pro TV Romania HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:30",
+      "time_display": "20:30",
+      "teams_display": "Leganés v Deportivo La Coruña",
+      "competition": "Spanish La Liga 2 - Week 3",
+      "channels": [
+        "DAZN España ($/geo/R)",
+        "LaLiga Hypermotion HD"
+      ],
+      "sources": [
+        "LiveOnSat"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:45",
+      "time_display": "20:45",
+      "teams_display": "KS Dinamo Tirana v Jagiellonia Bialystok",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Polsat Sport 1",
+        "Polsat Sport 1 HD",
+        "Polsat Sport Premium 1 Poland HD",
+        "SuperSport 2 Albania HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 20:45",
+      "time_display": "20:45",
+      "teams_display": "Linfield FC v Shelbourne FC",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Premier Sports 1 Ireland HD",
+        "Premier Sports 1 UK HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "FSV Mainz v Rosenborg BK",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "SWR Fernsehen Baden-Württemberg",
+        "SWR Fernsehen Baden-Württemberg HD",
+        "SWR Fernsehen Rheinland-Pfalz",
+        "SWR Fernsehen Rheinland-Pfalz HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "Legia Warschau v Hibernian FC",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "TVP 1 Poland HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "SC Braga v Lincoln Red Imps FC",
+      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "channels": [
+        "Sport TV 1 Portugal HD",
+        "Sport TV 5 Portugal HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "Servette FC v FC Shakhtar Donetsk",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "RTS 2 Switzerland HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "Shamrock Rovers v CD Santa Clara",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "Sport TV 2 Portugal HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-09-01 21:00",
+      "time_display": "21:00",
+      "teams_display": "SS Virtus v Breidablik Kopavogur",
+      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "channels": [
+        "RTV San Marino HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    }
+  ]
+}

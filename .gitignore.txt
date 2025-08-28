@@ -1,0 +1,12 @@
+# mediu virtual / cache
+.venv/
+__pycache__/
+*.pyc
+
+# date generate la rulare (nu vrem in repo)
+web/data/*
+!web/data/.gitkeep      # -> păstrăm DOAR .gitkeep ca să existe folderul în repo
+
+# artefacte locale
+.DS_Store
+Thumbs.db
