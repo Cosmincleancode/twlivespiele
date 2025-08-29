@@ -1,5 +1,7 @@
 /* TwLive3.0 UI – curat (un singur header)
+
    - Filtre: .filters .chip[data-filter="DAZN"|"SKY SPORT"|"*"]
+
 */
 
 const $  = (s) => document.querySelector(s);
@@ -27,7 +29,6 @@ let CURRENT_DATE = new Date(); // Store the current date
 function isoFromPicker(){
   let v = (DATE_INPUT?.value || "").trim();
   if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
-
   // If date input is empty or invalid, use the CURRENT_DATE
   const d = CURRENT_DATE;
   const mm = String(d.getMonth()+1).padStart(2,"0");
@@ -52,6 +53,7 @@ function setCounters(data){
   if (COUNTER_SE)  COUNTER_SE.textContent  = `SportEventz: ${se}`;
   if (COUNTER_TOT) COUNTER_TOT.textContent = `Total: ${tot}`;
 }
+
 function appendLog(t){
   if (!LOG) return;
   LOG.textContent = (LOG.textContent || "") + t + (t.endsWith("\n")?"":"\n");
@@ -118,6 +120,7 @@ async function loadLog(){
 async function loadGames(date) {
     try {
         const d = date ? formatDate(date) : isoFromPicker(); // Use provided date or datepicker value
+        console.log("loadGames() - Date being sent to API:", d); // ADDED: Log the date
         const r = await fetch(`/api/games?date=${d}`); // Pass the date to the API
         LAST_DATA = await r.json();
         setCounters(LAST_DATA);
@@ -131,12 +134,21 @@ async function doReload(){
   try{
     TOPBAR?.classList.add('loading');            // pornește mingea
     BTN_RELOAD.disabled = true; BTN_RELOAD.textContent = "Loading...";
+
     const d  = isoFromPicker(); // Get the date from the datepicker
+    console.log("doReload() - Date being sent to API:", d); // ADDED: Log the date
+
     const t0 = performance.now();
-    const r  = await fetch("/api/reload", { method:"POST", headers:{ "Content-Type":"application/json" }, body:JSON.stringify({date:d}) });
+    const r  = await fetch("/api/reload", {
+         method:"POST",
+         headers:{ "Content-Type":"application/json" },
+         body:JSON.stringify({date:d})
+    });
     const j  = await r.json();
     appendLog(`[UI] Reload ${j?.status || r.status} in ${((performance.now()-t0)/1000).toFixed(2)}s`);
-    await loadLog(); await loadGames();
+    await loadLog();
+    await loadGames(); // Reload games after reloading data
+
   }catch(e){
     appendLog("[UI] Reload error: " + (e?.message || e));
     alert("Reload error. Vezi logul.");
@@ -169,7 +181,6 @@ function wire(){
   // curăță eventuale mingi duplicate rămase din istoric
   const balls = document.querySelectorAll('.reload-ball');
   balls.forEach((b, i) => { if (i > 0) b.remove(); });
-
   // 3) filtre
   CHIP_BTNS.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -178,7 +189,6 @@ function wire(){
       draw();
     });
   });
-
   // 4) search (debounce)
   if (SEARCH){
     let t;
@@ -188,8 +198,10 @@ function wire(){
     });
   }
 
-  // 5) reload
-  BTN_RELOAD?.addEventListener("click", doReload);
+    // 5) reload - Modified to prevent double loading
+    BTN_RELOAD?.addEventListener("click", async () => {
+        await doReload();
+    });
 
   // 6) primele încărcări
   loadLog();
@@ -202,6 +214,7 @@ function wire(){
     if (DATE_INPUT) {
         DATE_INPUT.addEventListener("change", () => {
             CURRENT_DATE = new Date(DATE_INPUT.value); // Update CURRENT_DATE
+            console.log("Datepicker changed - New date:", CURRENT_DATE); // ADDED: Log the new date
             loadGames(CURRENT_DATE); // Load games for the selected date
         });
 
