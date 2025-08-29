@@ -265,10 +265,16 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
 # =========================================================
 
 
+def liveonsat_url_for_day(d: date) -> str:
+    """Construiește URL-ul pentru LiveOnSat 2day.php cu parametrii de dată."""
+    dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
+    return ("https://liveonsat.com/2day.php?"
+            f"start_dd={dd}&start_mm={mm}&start_yyyy={yy}"
+            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")  # <-- end_yyyy (NOT start_yyyy)
+
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     """Cere pagina 2day.php pentru ziua d și returnează soup."""
     url = liveonsat_url_for_day(d)
-    
     # Enhanced browser-like headers
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
