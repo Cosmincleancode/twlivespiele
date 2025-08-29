@@ -284,6 +284,7 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
 # =========================================================
 #                       LIVEONSAT (2day.php)
 # =========================================================
+
 def liveonsat_url_for_day(d: date) -> str:
     """Construiește URL-ul pentru LiveOnSat 2day.php cu parametrii de dată."""
     dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
@@ -299,47 +300,51 @@ def choose_best_time(box) -> str | None:
     3) Dacă nu găsește etichete, ia o oră plauzibilă (preferă 09:00–23:59; altfel maxima).
     Returnează 'HH:MM' sau None.
     """
-    # 1) adunăm textul din nodurile de timp; fallback pe tot box-ul
-    time_nodes = box.select(".fLeft_time_live, .fLeft_time")
-    fragments = [" ".join(t.stripped_strings) for t in time_nodes]
-    if not fragments:
-        fragments = [" ".join(box.stripped_strings)]
-    text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
-    
-    # 2) Căutăm etichete explicite cu HH:MM
-    labeled = []
-    label_regex = re.compile(
-        r"\b(?:ST|KO|START|BEGIN|ANPFIFF|ANSTOSS)\b[^\d]{0,8}(\d{1,2}:\d{2})",
-        flags=re.I
-    )
-    for m in label_regex.finditer(text):
-        label_zone = m.group(0).upper()
-        hhmm = m.group(1)
-        if "ST" in label_zone:     # prioritate maximă pentru ST
-            return hhmm
-        labeled.append(hhmm)
-    if labeled:
-        return labeled[0]          # prima etichetă găsită (KO/START/etc.)
-    
-    # 3) Fără etichete: strângem TOATE HH:MM
-    all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
-    if not all_times:
+    try:
+        # 1) adunăm textul din nodurile de timp; fallback pe tot box-ul
+        time_nodes = box.select(".fLeft_time_live, .fLeft_time")
+        fragments = [" ".join(t.stripped_strings) for t in time_nodes]
+        if not fragments:
+            fragments = [" ".join(box.stripped_strings)]
+        text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
+        
+        # 2) Căutăm etichete explicite cu HH:MM
+        labeled = []
+        label_regex = re.compile(
+            r"\b(?:ST|KO|START|BEGIN|ANPFIFF|ANSTOSS)\b[^\d]{0,8}(\d{1,2}:\d{2})",
+            flags=re.I
+        )
+        for m in label_regex.finditer(text):
+            label_zone = m.group(0).upper()
+            hhmm = m.group(1)
+            if "ST" in label_zone:     # prioritate maximă pentru ST
+                return hhmm
+            labeled.append(hhmm)
+        if labeled:
+            return labeled[0]          # prima etichetă găsită (KO/START/etc.)
+        
+        # 3) Fără etichete: strângem TOATE HH:MM
+        all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
+        if not all_times:
+            return None
+        
+        def to_minutes(hhmm: str) -> int:
+            h, m = hhmm.split(":")
+            return int(h) * 60 + int(m)
+        
+        # unice + sortate
+        candidates = sorted(set(all_times), key=to_minutes)
+        
+        # preferăm o fereastră "de zi": 09:00–23:59
+        day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
+        if day_window:
+            return day_window[0]       # cea mai mică din fereastră (startul)
+        
+        # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
+        return candidates[-1]
+    except Exception as e:
+        log(f"Error in choose_best_time: {e}")
         return None
-    
-    def to_minutes(hhmm: str) -> int:
-        h, m = hhmm.split(":")
-        return int(h) * 60 + int(m)
-    
-    # unice + sortate
-    candidates = sorted(set(all_times), key=to_minutes)
-    
-    # preferăm o fereastră "de zi": 09:00–23:59
-    day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
-    if day_window:
-        return day_window[0]       # cea mai mică din fereastră (startul)
-    
-    # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
-    return candidates[-1]
 
 def find_los_competition(box) -> str:
     """
@@ -347,81 +352,113 @@ def find_los_competition(box) -> str:
     Mergem înapoi prin elementele precedente și căutăm un nod 'titlu'.
     Heuristică: clasă ce conține title/head/comp/league sau text cu termeni tipici.
     """
-    KEY_CLASS = ("title", "head", "comp", "league", "country")
-    KEY_WORDS = r"(UEFA|Liga|League|Cup|Cupa|Serie|Bundesliga|Premier|LaLiga|Conference|Europa|World|Qualifier|Qualification|Play[- ]?Off|Round|Week|Group|Women|Cupa|Romaniei|Puchar|Pohar|Copa)"
-    
-    node = box.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
-    checks = 0
-    
-    while node and checks < 40:  # nu ne ducem prea departe
-        txt = node.get_text(" ", strip=True)
-        cls = " ".join((node.get("class") or [])).lower()
+    try:
+        KEY_CLASS = ("title", "head", "comp", "league", "country")
+        KEY_WORDS = r"(UEFA|Liga|League|Cup|Cupa|Serie|Bundesliga|Premier|LaLiga|Conference|Europa|World|Qualifier|Qualification|Play[- ]?Off|Round|Week|Group|Women|Cupa|Romaniei|Puchar|Pohar|Copa)"
         
-        if txt and any(k in cls for k in KEY_CLASS) and re.search(r"[A-Za-z]", txt):
-            # filtrăm liniuțe decorative
-            if len(txt) >= 3 and not re.fullmatch(r"[-–—\s]+", txt):
-                return txt
-                
-        if txt and re.search(KEY_WORDS, txt, re.I):
-            if len(txt) >= 3 and len(txt) < 200:
-                return txt
-                
-        node = node.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
-        checks += 1
+        node = box.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
+        checks = 0
         
-    return ""
+        while node and checks < 40:  # nu ne ducem prea departe
+            txt = node.get_text(" ", strip=True)
+            cls = " ".join((node.get("class") or [])).lower()
+            
+            if txt and any(k in cls for k in KEY_CLASS) and re.search(r"[A-Za-z]", txt):
+                # filtrăm liniuțe decorative
+                if len(txt) >= 3 and not re.fullmatch(r"[-–—\s]+", txt):
+                    return txt
+                    
+            if txt and re.search(KEY_WORDS, txt, re.I):
+                if len(txt) >= 3 and len(txt) < 200:
+                    return txt
+                    
+            node = node.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
+            checks += 1
+            
+        return ""
+    except Exception as e:
+        log(f"Error in find_los_competition: {e}")
+        return ""
 
 def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
     """Parsează soup-ul LiveOnSat și extrage informațiile despre meciuri."""
     games = []
-    for box in soup.select("div.blockfix"):
-        # ORA
-        time_str = choose_best_time(box)
-        if not time_str:
-            continue
-        # ECHIPE
-        fleft = box.select_one(".fix_text .fLeft")
-        if not fleft:
-            continue
-        teams = fleft.get_text(" ", strip=True)
-        m_teams = re.search(r"(.+?)\s+(?:v|vs\.?|–|-)\s+(.+)$", teams, re.I)
-        if not m_teams:
-            continue
-        home, away = m_teams.group(1).strip(), m_teams.group(2).strip()
-        # CANALE
-        channels = []
-        for a in box.select(".fLeft_live a"):
-            txt = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
-            if len(txt) >= 2:
-                channels.append(txt)
-        # COMPETIȚIA (heuristică din heading-urile anterioare)
-        comp = find_los_competition(box)
-        games.append({
-            "source": "LiveOnSat",
-            "time_local": parse_time_local(date_iso, time_str),
-            "time_str": time_str,
-            "time_display": time_str,
-            "home": home, "away": away,
-            "teams_display": f"{home} v {away}",
-            "competition": comp,     # <— acum încercăm să o avem și din L-o-S
-            "channels": highlight_first(channels)
-        })
-    log(f"LiveOnSat parsed games: {len(games)}")
-    return games
+    try:
+        boxes = soup.select("div.blockfix")
+        log(f"Found {len(boxes)} blockfix elements to parse")
+        
+        for box in boxes:
+            try:
+                # ORA
+                time_str = choose_best_time(box)
+                if not time_str:
+                    continue
+                
+                # ECHIPE
+                fleft = box.select_one(".fix_text .fLeft")
+                if not fleft:
+                    continue
+                
+                teams = fleft.get_text(" ", strip=True)
+                m_teams = re.search(r"(.+?)\s+(?:v|vs\.?|–|-)\s+(.+)$", teams, re.I)
+                if not m_teams:
+                    continue
+                
+                home, away = m_teams.group(1).strip(), m_teams.group(2).strip()
+                
+                # CANALE
+                channels = []
+                for a in box.select(".fLeft_live a"):
+                    txt = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+                    if len(txt) >= 2:
+                        channels.append(txt)
+                
+                # COMPETIȚIA (heuristică din heading-urile anterioare)
+                comp = find_los_competition(box)
+                
+                games.append({
+                    "source": "LiveOnSat",
+                    "time_local": parse_time_local(date_iso, time_str),
+                    "time_str": time_str,
+                    "time_display": time_str,
+                    "home": home, "away": away,
+                    "teams_display": f"{home} v {away}",
+                    "competition": comp,     # <— acum încercăm să o avem și din L-o-S
+                    "channels": highlight_first(channels)
+                })
+            except Exception as box_error:
+                log(f"Error parsing a box: {box_error}")
+                continue
+        
+        log(f"LiveOnSat parsed games: {len(games)}")
+        return games
+    except Exception as e:
+        log(f"Error in parse_liveonsat_soup: {e}")
+        log(traceback.format_exc())
+        return []  # Return empty list on error
 
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
-    """Cere pagina 2day.php pentru ziua d și returnează soup, cu suport pentru proxy."""
+    """Cere pagina 2day.php pentru ziua d și returnează soup."""
     url = liveonsat_url_for_day(d)
     
-    # Enhanced browser-like headers
+    # Enhanced browser-like headers with more variations
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
         'Referer': 'https://liveonsat.com/',
+        'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not;A=Brand";v="99"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
         'Connection': 'keep-alive',
         'Cache-Control': 'max-age=0',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-User': '?1',
         'Upgrade-Insecure-Requests': '1',
+        'Priority': 'high'
     }
     
     # Create a session to maintain cookies
@@ -432,96 +469,131 @@ def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     max_retries = 3
     retry_delay = 5
     
-    # Try with different proxies and without proxy
-    proxy_list = FREE_PROXIES + [None]  # Try also without proxy
+    # List of user agents to try
+    user_agents = [
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0',
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+    ]
     
-    for proxy in proxy_list:
-        if proxy is None:
-            log("Trying without proxy...")
-            proxies = None
-        else:
-            log(f"Trying with proxy: {proxy}")
-            proxies = {
-                "http": proxy,
-                "https": proxy
-            }
-        
-        for attempt in range(max_retries):
-            try:
-                # Random delay between 2-5 seconds to avoid rate limiting
-                time.sleep(random.uniform(2, 5))
-                
-                # Try different User-Agent for each attempt
-                if attempt > 0:
-                    user_agents = [
-                        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
-                        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15',
-                        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36',
-                        'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1'
-                    ]
-                    session.headers.update({'User-Agent': random.choice(user_agents)})
-                
-                # Make the request with or without proxy
-                r = session.get(url, timeout=30, proxies=proxies)
-                r.raise_for_status()
-                
-                log(f"liveonsat: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
-                open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
-                
-                return BeautifulSoup(r.text, "lxml")
+    # Try different approaches
+    for attempt in range(max_retries):
+        try:
+            # Random delay between 3-8 seconds to avoid rate limiting
+            time.sleep(random.uniform(3, 8))
             
-            except requests.exceptions.RequestException as e:
-                log(f"Error fetching {url} (Proxy: {proxy}, Attempt {attempt+1}/{max_retries}): {e}")
+            # Rotate User-Agent for each attempt
+            current_ua = random.choice(user_agents)
+            session.headers.update({'User-Agent': current_ua})
+            log(f"Using User-Agent: {current_ua[:30]}...")
+            
+            # Make the request without proxy
+            r = session.get(url, timeout=45)
+            r.raise_for_status()
+            
+            content_length = len(r.content)
+            log(f"liveonsat: HTTP {r.status_code}, bytes={content_length}, url={url}")
+            
+            # Validate that we got a proper HTML response, not a blocked page
+            if content_length < 5000:  # If response is too small, it's likely a block page
+                log(f"Response seems too small ({content_length} bytes), might be blocked")
+                raise Exception("Response too small, likely blocked")
                 
-                # If not the last attempt, wait and retry
-                if attempt < max_retries - 1:
-                    log(f"Retrying in {retry_delay} seconds...")
-                    time.sleep(retry_delay)
-                    # Increase delay for next attempt
-                    retry_delay *= 1.5
+            # Save the HTML for debugging
+            open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
+            
+            # Parse with BeautifulSoup
+            soup = BeautifulSoup(r.text, "lxml")
+            
+            # Check if the page seems valid (has expected elements)
+            if not soup.select("div.blockfix") and not soup.select(".fix_text"):
+                log("Response doesn't contain expected HTML elements, might be blocked")
+                raise Exception("Missing expected HTML elements")
+                
+            return soup
+            
+        except Exception as e:
+            log(f"Error on attempt {attempt+1}/{max_retries}: {e}")
+            
+            # If not the last attempt, wait and retry
+            if attempt < max_retries - 1:
+                log(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                # Increase delay for next attempt
+                retry_delay *= 2
     
-    # If all proxies and attempts fail, try with Selenium as a last resort
-    log("All proxies failed. Attempting with Selenium...")
+    # If direct requests fail, try with Selenium as a last resort
+    log("All direct attempts failed. Trying Selenium...")
     try:
         return fetch_liveonsat_via_selenium(d)
     except Exception as e:
-        log(f"Selenium fallback failed: {e}")
-        return None
+        log(f"Selenium attempt also failed: {e}")
+        # If Selenium also fails, return an empty soup rather than None
+        log("Creating empty fallback BeautifulSoup")
+        return BeautifulSoup("<html><body></body></html>", "lxml")
 
 def fetch_liveonsat_via_selenium(d: date) -> BeautifulSoup:
     """Last resort: use Selenium to fetch LiveOnSat page."""
     url = liveonsat_url_for_day(d)
     log(f"liveonsat: Selenium fallback -> {url}")
     
+    # Configure Chrome options for serverless environment
     opts = Options()
     opts.add_argument("--headless=new")
     opts.add_argument("--no-sandbox")
+    opts.add_argument("--disable-dev-shm-usage")  # Important for Docker/serverless
     opts.add_argument("--disable-gpu")
     opts.add_argument("--window-size=1366,900")
+    opts.add_argument("--disable-extensions")
     
     # Add random user agent
     user_agents = [
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15',
-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36'
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0'
     ]
     opts.add_argument(f"user-agent={random.choice(user_agents)}")
     
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=opts)
-    
     try:
-        driver.get(url)
-        time.sleep(5.0)  # Wait longer for JavaScript to execute
-        html = driver.page_source
+        # For serverless environments, use a different approach to get Chrome
+        if os.environ.get('RENDER'):
+            log("Running in Render.com environment, using direct path")
+            # For Render.com, Chrome is pre-installed but needs direct path
+            chrome_driver_path = "/usr/bin/chromedriver"
+            service = Service(chrome_driver_path)
+        else:
+            # For local development
+            log("Running in local environment, using webdriver_manager")
+            service = Service(ChromeDriverManager().install())
         
-        with open(os.path.join(WEB_DATA, "__liveonsat_selenium.html"),
-                  "w", encoding="utf-8", errors="ignore") as f:
-            f.write(html)
+        driver = webdriver.Chrome(service=service, options=opts)
         
-        return BeautifulSoup(html, "lxml")
-    finally:
-        driver.quit()
+        try:
+            driver.get(url)
+            time.sleep(7.0)  # Wait longer for JavaScript to execute
+            
+            # Scroll to ensure all content is loaded
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
+            time.sleep(2)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            
+            html = driver.page_source
+            content_length = len(html)
+            log(f"Selenium fetched {content_length} bytes")
+            
+            with open(os.path.join(WEB_DATA, "__liveonsat_selenium.html"),
+                     "w", encoding="utf-8", errors="ignore") as f:
+                f.write(html)
+            
+            return BeautifulSoup(html, "lxml")
+        finally:
+            driver.quit()
+    except Exception as e:
+        log(f"Error in Selenium: {e}")
+        log(traceback.format_exc())
+        return BeautifulSoup("<html><body></body></html>", "lxml")
 
 # =========================================================
 #                         MERGE
