@@ -302,6 +302,9 @@ def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     except requests.exceptions.RequestException as e:
         log(f"Error fetching {url}: {e}")
         return None
+    except Exception as e:
+        log(f"An unexpected error occurred: {e}")  # Log unexpected errors
+        return None
 
 def choose_best_time(box) -> str | None:
     """
