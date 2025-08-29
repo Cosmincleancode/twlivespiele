@@ -3,3 +3,4 @@ gunicorn>=21,<22
 pytz>=2024.1
 selenium==4.*
 webdriver-manager==4.*
+beautifulsoup4 
