@@ -12,13 +12,11 @@ import requests
 from bs4 import BeautifulSoup
 from rapidfuzz import fuzz
 from urllib.parse import quote
-
 # Selenium (fallback pentru SportEventz când randarea e în JS)
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
 # --- Fuzzy matching: rapidfuzz (dacă e instalat) sau fallback cu difflib ---
 try:
     from rapidfuzz import fuzz as _rf_fuzz  # rapid & corect
@@ -152,20 +150,24 @@ def fetch_sporteventz_via_selenium(query_date_iso: str) -> BeautifulSoup:
 def fetch_sporteventz_html(d: date) -> BeautifulSoup:
     """Încercăm endpoint-ul component/magictable; dacă e doar șablon JS => Selenium."""
     url = sporteventz_url_for_date(d)
-    r = requests.get(url, headers=SE_HEADERS, timeout=30)
-    log(f"sporteventz: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
-    r.raise_for_status()
-    html = r.text
-    with open(os.path.join(WEB_DATA, "__sporteventz.html"),
-              "w", encoding="utf-8", errors="ignore") as f:
-        f.write(html)
-    has_rows_marker = ("MagicTableRow" in html) or ("jtable-data-row" in html)
-    log(f"sporteventz: has_rows_marker={has_rows_marker}")
-    soup = BeautifulSoup(html, "lxml")
-    # dacă markerii există, dar DOM-ul nu are elemente reale -> randare JS -> Selenium
-    if has_rows_marker and not soup.select(".MagicTableRow"):
-        return fetch_sporteventz_via_selenium(d.strftime("%Y-%m-%d"))
-    return soup
+    try:
+        r = requests.get(url, headers=SE_HEADERS, timeout=30)
+        log(f"sporteventz: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
+        r.raise_for_status()
+        html = r.text
+        with open(os.path.join(WEB_DATA, "__sporteventz.html"),
+                  "w", encoding="utf-8", errors="ignore") as f:
+            f.write(html)
+        has_rows_marker = ("MagicTableRow" in html) or ("jtable-data-row" in html)
+        log(f"sporteventz: has_rows_marker={has_rows_marker}")
+        soup = BeautifulSoup(html, "lxml")
+        # dacă markerii există, dar DOM-ul nu are elemente reale -> randare JS -> Selenium
+        if has_rows_marker and not soup.select(".MagicTableRow"):
+            return fetch_sporteventz_via_selenium(d.strftime("%Y-%m-%d"))
+        return soup
+    except requests.exceptions.RequestException as e:
+        log(f"Error fetching SportEventz HTML: {e}")
+        return None
 
 def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
     """
@@ -192,14 +194,12 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
         if m:
             return m.group(1).strip(), m.group(2).strip()
         return None, None
-
     def extract_time(row):
         tnode = row.select_one(".MagicTableRowFootline h3")
         if not tnode:
             return None
         m = re.search(r"(\d{1,2}:\d{2})", tnode.get_text(" ", strip=True))
         return m.group(1) if m else None
-
     def extract_channels(row):
         ch = []
         for btn in row.select(".MagicTableRowMoreButton"):
@@ -212,7 +212,6 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
             if len(name) >= 2:
                 ch.append(name)
         return highlight_first(ch)
-
     # -- varianta tabel cu <tr> --
     rows = soup.select("tr.jtable-data-row")
     if rows:
@@ -238,7 +237,6 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
         log(f"SportEventz parsed games (tr variant): {len(games)}")
         if games:
             return games
-
     # -- varianta cu .MagicTableRow direct --
     for row in soup.select(".MagicTableRow"):
         time_str = extract_time(row)
@@ -270,7 +268,6 @@ import re
 import os
 from datetime import date
 import time  # Import the time module
-
 # Assuming UA, WEB_DATA, log, parse_time_local, highlight_first are defined elsewhere in your code
 # Replace these with your actual definitions
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'  # Example User-Agent
@@ -320,7 +317,6 @@ def choose_best_time(box) -> str | None:
     if not fragments:
         fragments = [" ".join(box.stripped_strings)]
     text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
-
     # 2) Căutăm etichete explicite cu HH:MM
     labeled = []
     label_regex = re.compile(
@@ -335,7 +331,6 @@ def choose_best_time(box) -> str | None:
         labeled.append(hhmm)
     if labeled:
         return labeled[0]          # prima etichetă găsită (KO/START/etc.)
-
     # 3) Fără etichete: strângem TOATE HH:MM
     all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
     if not all_times:
@@ -343,15 +338,12 @@ def choose_best_time(box) -> str | None:
     def to_minutes(hhmm: str) -> int:
         h, m = hhmm.split(":")
         return int(h) * 60 + int(m)
-
     # unice + sortate
     candidates = sorted(set(all_times), key=to_minutes)
-
     # preferăm o fereastră "de zi": 09:00–23:59
     day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
     if day_window:
         return day_window[0]       # cea mai mică din fereastră (startul)
-
     # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
     return candidates[-1]
 
@@ -501,79 +493,3 @@ def merge_all(los, se):
             # competiție: preferăm SportEventz când avem ambele
             comp = matched_h.get("competition", "") or comp
         merged.append({
-            "time_local": f"{date_iso} {tdisp}",
-            "time_display": tdisp,
-            "teams_display": g["teams_display"],  # denumire după LiveOnSat (cum ai cerut)
-            "competition": comp,
-            "channels": highlight_first(ch),
-            "sources": sorted(sources),
-        })
-    # ce rămâne doar în SportEventz
-    for i, h in enumerate(se):
-        if used[i]:
-            continue
-        merged.append({
-            "time_local": h["time_local"],
-            "time_display": _hhmm_from_game(h),
-            "teams_display": h["teams_display"],
-            "competition": h.get("competition", "") or "",
-            "channels": highlight_first(h["channels"]),
-            "sources": ["SportEventz"],
-        })
-    merged.sort(key=lambda x: (x["time_local"], x["teams_display"].lower()))
-    return merged
-
-# =========================================================
-#                         MAIN
-# =========================================================
-def main(query_date_str=None):
-    try:
-        # --- dată din argument sau azi (Viena) ---
-        if query_date_str:
-            query_date = date.fromisoformat(query_date_str)
-        elif len(sys.argv) >= 2:
-            query_date = date.fromisoformat(sys.argv[1])
-        else:
-            query_date = now_vienna().date()
-
-        date_iso = query_date.strftime("%Y-%m-%d")
-        log(f"Scrape start for {date_iso}")
-
-        # --- fetch + parse pentru ziua cerută ---
-        los_soup = fetch_liveonsat_html(query_date)
-        se_soup  = fetch_sporteventz_html(query_date)
-        los = parse_liveonsat_soup(los_soup, date_iso);   log(f"LiveOnSat: {len(los)}")
-        se  = parse_sporteventz_soup(se_soup, date_iso);  log(f"SportEventz: {len(se)}")
-        merged = merge_all(los, se)
-        log(f"Merged total: {len(merged)}")
-
-        out = {
-            "date": date_iso,
-            "generated_at": f"{now_vienna():%Y-%m-%d %H:%M:%S}",
-            "counters": {"LiveOnSat": len(los), "SportEventz": len(se), "Total": len(merged)},
-            "timezone": "Europe/Vienna (GMT+2)",
-            "games": merged
-        }
-
-        with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
-            json.dump(out, f, ensure_ascii=False, indent=2)
-
-        log("OK: JSON written.")
-        return out  # Return the data
-
-    except Exception as e:
-        # scriem eroarea în merged.json ca UI-ul să aibă ce citi
-        log("ERROR: " + str(e))
-        log(traceback.format_exc())
-        err = {
-            "date": f"{now_vienna():%Y-%m-%d}",
-            "generated_at": f"{now_vienna():%Y-%m-%d %H:%M:%S}",
-            "error": str(e),
-            "games": []
-        }
-        with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
-            json.dump(err, f, ensure_ascii=False, indent=2)
-        return err  # Return the error
-
-if __name__ == "__main__":
-    sys.exit(main())
