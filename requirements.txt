@@ -1,2 +1,5 @@
+flask>=3.0,<4
+gunicorn>=21,<22
+pytz>=2024.1
 selenium==4.*
 webdriver-manager==4.*
