@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, jsonify, request
 import subprocess, os, time, sys, json
 import scraper.scraper as scraper  # Import the scraper
+from datetime import date
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 
@@ -36,10 +37,20 @@ def index():
 def api_games():
     # dacă există ?date=YYYY-MM-DD, rulăm scraperul pentru acea dată
     query_date = request.args.get("date")
+
     if query_date:
+        try:
+            # Validate the date format
+            date.fromisoformat(query_date)
+        except ValueError:
+            return jsonify({"error": "Invalid date format. Use YYYY-MM-DD."}), 400
+
         start = time.time()
         # Call the scraper function directly
-        result = scraper.main(query_date)
+        try:
+            result = scraper.main(query_date)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
         elapsed = round(time.time() - start, 2)
 
         if "error" in result:
@@ -78,33 +89,45 @@ def reload_data():
     payload = request.get_json(silent=True) or {}
     query_date = payload.get("date")
 
-    start = time.time()
-    # Call the scraper function directly
-    result = scraper.main(query_date)
-    elapsed = round(time.time() - start, 2)
+    if query_date:
+        try:
+            # Validate the date format
+            date.fromisoformat(query_date)
+        except ValueError:
+            return jsonify({"error": "Invalid date format. Use YYYY-MM-DD."}), 400
 
-    if "error" in result:
-        # Handle errors from the scraper
-        status = "error"
-        stdout = ""
-        stderr = result.get("error")  # Or any relevant error info
-        return jsonify({
-            "status": status,
-            "elapsed": elapsed,
-            "stdout": stdout,
-            "stderr": stderr,
-        }), 500
+        start = time.time()
+        # Call the scraper function directly
+        try:
+            result = scraper.main(query_date)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+        elapsed = round(time.time() - start, 2)
+
+        if "error" in result:
+            # Handle errors from the scraper
+            status = "error"
+            stdout = ""
+            stderr = result.get("error")  # Or any relevant error info
+            return jsonify({
+                "status": status,
+                "elapsed": elapsed,
+                "stdout": stdout,
+                "stderr": stderr,
+            }), 500
+        else:
+            # Successful scrape
+            status = "ok"
+            stdout = ""
+            stderr = ""
+            return jsonify({
+                "status": status,
+                "elapsed": elapsed,
+                "stdout": stdout,
+                "stderr": stderr,
+            }), 200
     else:
-        # Successful scrape
-        status = "ok"
-        stdout = ""
-        stderr = ""
-        return jsonify({
-            "status": status,
-            "elapsed": elapsed,
-            "stdout": stdout,
-            "stderr": stderr,
-        }), 200
+        return jsonify({"error": "Date parameter is missing."}), 400
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=True)
