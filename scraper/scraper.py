@@ -492,4 +492,84 @@ def merge_all(los, se):
             tdisp = _hhmm_from_game(matched_h) or tdisp
             # competiție: preferăm SportEventz când avem ambele
             comp = matched_h.get("competition", "") or comp
-        merged.append({
+        merged.append(
+            {
+                "time_local": f"{date_iso} {tdisp}",
+                "time_display": tdisp,
+                "teams_display": g["teams_display"],  # denumire după LiveOnSat (cum ai cerut)
+                "competition": comp,
+                "channels": highlight_first(ch),
+                "sources": sorted(sources),
+            }
+        )
+    # ce rămâne doar în SportEventz
+    for i, h in enumerate(se):
+        if used[i]:
+            continue
+        merged.append(
+            {
+                "time_local": h["time_local"],
+                "time_display": _hhmm_from_game(h),
+                "teams_display": h["teams_display"],
+                "competition": h.get("competition", "") or "",
+                "channels": highlight_first(h["channels"]),
+                "sources": ["SportEventz"],
+            }
+        )
+    merged.sort(key=lambda x: (x["time_local"], x["teams_display"].lower()))
+    return merged
+
+# =========================================================
+#                         MAIN
+# =========================================================
+def main(query_date_str=None):
+    try:
+        # --- dată din argument sau azi (Viena) ---
+        if query_date_str:
+            query_date = date.fromisoformat(query_date_str)
+        elif len(sys.argv) >= 2:
+            query_date = date.fromisoformat(sys.argv[1])
+        else:
+            query_date = now_vienna().date()
+        date_iso = query_date.strftime("%Y-%m-%d")
+        log(f"Scrape start for {date_iso}")
+        # --- fetch + parse pentru ziua cerută ---
+        los_soup = fetch_liveonsat_html(query_date)
+        if los_soup is None:
+            raise Exception("Failed to fetch LiveOnSat HTML")
+        se_soup = fetch_sporteventz_html(query_date)
+        if se_soup is None:
+            raise Exception("Failed to fetch SportEventz HTML")
+        los = parse_liveonsat_soup(los_soup, date_iso)
+        log(f"LiveOnSat: {len(los)}")
+        se = parse_sporteventz_soup(se_soup, date_iso)
+        log(f"SportEventz: {len(se)}")
+        merged = merge_all(los, se)
+        log(f"Merged total: {len(merged)}")
+        out = {
+            "date": date_iso,
+            "generated_at": f"{now_vienna():%Y-%m-%d %H:%M:%S}",
+            "counters": {"LiveOnSat": len(los), "SportEventz": len(se), "Total": len(merged)},
+            "timezone": "Europe/Vienna (GMT+2)",
+            "games": merged,
+        }
+        with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=2)
+        log("OK: JSON written.")
+        return out  # Return the data
+    except Exception as e:
+        # scriem eroarea în merged.json ca UI-ul să aibă ce citi
+        log("ERROR: " + str(e))
+        log(traceback.format_exc())
+        err = {
+            "date": f"{now_vienna():%Y-%m-%d}",
+            "generated_at": f"{now_vienna():%Y-%m-%d %H:%M:%S}",
+            "error": str(e),
+            "games": [],
+        }
+        with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
+            json.dump(err, f, ensure_ascii=False, indent=2)
+        return err  # Return the error
+
+if __name__ == "__main__":
+    sys.exit(main())
