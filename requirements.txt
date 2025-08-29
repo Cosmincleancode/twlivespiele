@@ -5,3 +5,4 @@ selenium==4.*
 webdriver-manager==4.*
 beautifulsoup4==4.12.3
 rapidfuzz
+lxml>=4.9.2
