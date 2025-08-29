@@ -264,135 +264,59 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
 # =========================================================
 
 
-def liveonsat_url_for_day(d: date) -> str:
-    dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
-    return ("https://liveonsat.com/2day.php?"
-            f"start_dd={dd}&start_mm={mm}&start_yyyy={yy}"
-            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")  # <-- end_yyyy (NOT start_yyyy)
-
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     """Cere pagina 2day.php pentru ziua d și returnează soup."""
     url = liveonsat_url_for_day(d)
-    headers = {"User-Agent": UA}
-    try:
-        time.sleep(2)  # Wait 2 seconds before each request
-        r = requests.get(url, headers=headers, timeout=30)
-        r.raise_for_status()
-        log(f"liveonsat: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
-        open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
-        return BeautifulSoup(r.text, "lxml")
-    except requests.exceptions.RequestException as e:
-        log(f"Error fetching {url}: {e}")
-        return None
-    except Exception as e:
-        log(f"An unexpected error occurred: {e}")  # Log unexpected errors
-        return None
-
-def choose_best_time(box) -> str | None:
-    """
-    Extrage ora corectă dintr-un 'box' LiveOnSat.
-    1) Preferă eticheta ST (Start Time).
-    2) Apoi KO/START/BEGIN/ANPFIFF/ANSTOSS.
-    3) Dacă nu găsește etichete, ia o oră plauzibilă (preferă 09:00–23:59; altfel maxima).
-    Returnează 'HH:MM' sau None.
-    """
-    # 1) adunăm textul din nodurile de timp; fallback pe tot box-ul
-    time_nodes = box.select(".fLeft_time_live, .fLeft_time")
-    fragments = [" ".join(t.stripped_strings) for t in time_nodes]
-    if not fragments:
-        fragments = [" ".join(box.stripped_strings)]
-    text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
-    # 2) Căutăm etichete explicite cu HH:MM
-    labeled = []
-    label_regex = re.compile(
-        r"\b(?:ST|KO|START|BEGIN|ANPFIFF|ANSTOSS)\b[^\d]{0,8}(\d{1,2}:\d{2})",
-        flags=re.I
-    )
-    for m in label_regex.finditer(text):
-        label_zone = m.group(0).upper()
-        hhmm = m.group(1)
-        if "ST" in label_zone:     # prioritate maximă pentru ST
-            return hhmm
-        labeled.append(hhmm)
-    if labeled:
-        return labeled[0]          # prima etichetă găsită (KO/START/etc.)
-    # 3) Fără etichete: strângem TOATE HH:MM
-    all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
-    if not all_times:
-        return None
-    def to_minutes(hhmm: str) -> int:
-        h, m = hhmm.split(":")
-        return int(h) * 60 + int(m)
-    # unice + sortate
-    candidates = sorted(set(all_times), key=to_minutes)
-    # preferăm o fereastră "de zi": 09:00–23:59
-    day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
-    if day_window:
-        return day_window[0]       # cea mai mică din fereastră (startul)
-    # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
-    return candidates[-1]
-
-def find_los_competition(box) -> str:
-    """
-    În LiveOnSat, competiția e de multe ori într-un heading deasupra 'box'-ului.
-    Mergem înapoi prin elementele precedente și căutăm un nod 'titlu'.
-    Heuristică: clasă ce conține title/head/comp/league sau text cu termeni tipici.
-    """
-    KEY_CLASS = ("title", "head", "comp", "league", "country")
-    KEY_WORDS = r"(UEFA|Liga|League|Cup|Cupa|Serie|Bundesliga|Premier|LaLiga|Conference|Europa|World|Qualifier|Qualification|Play[- ]?Off|Round|Week|Group|Women|Cupa|Romaniei|Puchar|Pohar|Copa)"
-    node = box.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
-    checks = 0
-    while node and checks < 40:  # nu ne ducem prea departe
-        txt = node.get_text(" ", strip=True)
-        cls = " ".join((node.get("class") or [])).lower()
-        if txt and any(k in cls for k in KEY_CLASS) and re.search(r"[A-Za-z]", txt):
-            # filtrăm liniuțe decorative
-            if len(txt) >= 3 and not re.fullmatch(r"[-–—\s]+", txt):
-                return txt
-        if txt and re.search(KEY_WORDS, txt, re.I):
-            if len(txt) >= 3 and len(txt) < 200:
-                return txt
-        node = node.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
-        checks += 1
-    return ""
-
-def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
-    games = []
-    for box in soup.select("div.blockfix"):
-        # ORA
-        time_str = choose_best_time(box)
-        if not time_str:
-            continue
-        # ECHIPE
-        fleft = box.select_one(".fix_text .fLeft")
-        if not fleft:
-            continue
-        teams = fleft.get_text(" ", strip=True)
-        m_teams = re.search(r"(.+?)\s+(?:v|vs\.?|–|-)\s+(.+)$", teams, re.I)
-        if not m_teams:
-            continue
-        home, away = m_teams.group(1).strip(), m_teams.group(2).strip()
-        # CANALE
-        channels = []
-        for a in box.select(".fLeft_live a"):
-            txt = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
-            if len(txt) >= 2:
-                channels.append(txt)
-        # COMPETIȚIA (heuristică din heading-urile anterioare)
-        comp = find_los_competition(box)
-        games.append({
-            "source": "LiveOnSat",
-            "time_local": parse_time_local(date_iso, time_str),
-            "time_str": time_str,
-            "time_display": time_str,
-            "home": home, "away": away,
-            "teams_display": f"{home} v {away}",
-            "competition": comp,     # <— acum încercăm să o avem și din L-o-S
-            "channels": highlight_first(channels)
-        })
-    log(f"LiveOnSat parsed games: {len(games)}")
-    return games
-
+    
+    # Enhanced browser-like headers
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://liveonsat.com/',
+        'Connection': 'keep-alive',
+        'Cache-Control': 'max-age=0',
+        'Upgrade-Insecure-Requests': '1',
+    }
+    
+    # Create a session to maintain cookies
+    session = requests.Session()
+    session.headers.update(headers)
+    
+    # Add retry logic
+    max_retries = 3
+    retry_delay = 5
+    
+    for attempt in range(max_retries):
+        try:
+            # Random delay between 2-5 seconds to avoid rate limiting
+            time.sleep(random.uniform(2, 5))
+            
+            # Make the request
+            r = session.get(url, timeout=30)
+            r.raise_for_status()
+            
+            log(f"liveonsat: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
+            open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
+            
+            return BeautifulSoup(r.text, "lxml")
+        
+        except requests.exceptions.RequestException as e:
+            log(f"Error fetching {url} (Attempt {attempt+1}/{max_retries}): {e}")
+            
+            # If not the last attempt, wait and retry
+            if attempt < max_retries - 1:
+                log(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                # Increase delay for next attempt
+                retry_delay *= 1.5
+            else:
+                log("All retry attempts failed")
+                return None
+                
+        except Exception as e:
+            log(f"An unexpected error occurred: {e}")
+            return None
 # =========================================================
 #                         MERGE
 # =========================================================
