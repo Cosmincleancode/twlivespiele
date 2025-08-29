@@ -5,10 +5,8 @@
 # - Ore stabile: time_display = stringul exact din sursă (fără conversii)
 # - Merge smart: dedupă pe timp +/- 2 min & fuzzy 65
 # ======================
-
 import os, re, json, sys, traceback, time
 from datetime import datetime, timedelta, date
-
 import pytz
 import requests
 from bs4 import BeautifulSoup
@@ -26,7 +24,6 @@ try:
     from rapidfuzz import fuzz as _rf_fuzz  # rapid & corect
 except Exception:
     _rf_fuzz = None
-
 import difflib
 
 def _token_set_ratio(a: str, b: str) -> int:
@@ -37,28 +34,23 @@ def _token_set_ratio(a: str, b: str) -> int:
     """
     if _rf_fuzz is not None:
         return int(_rf_fuzz.token_set_ratio(a, b))
-
     # fallback: normalizare + SequenceMatcher
     def _norm(s: str) -> str:
         toks = [t for t in re.split(r"\s+", s.strip().lower()) if t]
         toks = sorted(set(toks))
         return " ".join(toks)
-
     a_n = _norm(a)
     b_n = _norm(b)
     return int(difflib.SequenceMatcher(None, a_n, b_n).ratio() * 100)
-
 
 # ---------- CONSTANTE / CĂI ----------
 VIENNA = pytz.timezone("Europe/Vienna")   # fusul nostru
 ROOT = os.path.dirname(os.path.dirname(__file__))
 WEB_DATA = os.path.join(ROOT, "web", "data")
 os.makedirs(WEB_DATA, exist_ok=True)
-
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36"
 HIGHLIGHT = ["DAZN", "SKY SPORT", "CANAL PLUS ACTION", "CANAL + ACTION", "SPORTDIGITAL"]
 STOPWORDS = set("fc cf afc sc ac fk sv cd aek csm club calcio de la el los the".split())
-
 
 # ---------- HELPERI LOG / TIMP ----------
 def now_vienna():
@@ -104,7 +96,6 @@ def highlight_first(chs):
     uniq = list(dict.fromkeys([re.sub(r"\s+", " ", c).strip() for c in chs]))
     return sorted(uniq, key=k)
 
-
 # =========================================================
 #                 SPORTEVENTZ (component/magictable)
 # =========================================================
@@ -137,17 +128,14 @@ def fetch_sporteventz_via_selenium(query_date_iso: str) -> BeautifulSoup:
     """
     url = "https://www.sporteventz.com/de/soccer"
     log(f"sporteventz: Selenium fallback -> {url} (date={query_date_iso})")
-
     opts = Options()
     # opțiunea 'new' elimină warning-uri pe Chrome 115+
     opts.add_argument("--headless=new")
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-gpu")
     opts.add_argument("--window-size=1366,900")
-
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=opts)
-
     try:
         driver.get(url)
         time.sleep(3.0)  # așteptăm rândurile
@@ -171,11 +159,9 @@ def fetch_sporteventz_html(d: date) -> BeautifulSoup:
     with open(os.path.join(WEB_DATA, "__sporteventz.html"),
               "w", encoding="utf-8", errors="ignore") as f:
         f.write(html)
-
     has_rows_marker = ("MagicTableRow" in html) or ("jtable-data-row" in html)
     log(f"sporteventz: has_rows_marker={has_rows_marker}")
     soup = BeautifulSoup(html, "lxml")
-
     # dacă markerii există, dar DOM-ul nu are elemente reale -> randare JS -> Selenium
     if has_rows_marker and not soup.select(".MagicTableRow"):
         return fetch_sporteventz_via_selenium(d.strftime("%Y-%m-%d"))
@@ -192,7 +178,6 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
       * canale din .MagicTableRowMoreButton + fallback headline în .magictableSub h3
     """
     games = []
-
     # -- helpers interni pentru parsare --
     def extract_teams(row):
         h = row.select_one(".MagicTableRowMainHomeTeamName")
@@ -276,7 +261,6 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
     log(f"SportEventz parsed games (div variant): {len(games)}")
     return games
 
-
 # =========================================================
 #                       LIVEONSAT (2day.php)
 # =========================================================
@@ -284,7 +268,7 @@ def liveonsat_url_for_day(d: date) -> str:
     dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
     return ("https://liveonsat.com/2day.php?"
             f"start_dd={dd}&start_mm={mm}&start_yyyy={yy}"
-            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")
+            f"&end_dd={dd}&end_mm={mm}&start_yyyy={yy}")
 
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     """Cere pagina 2day.php pentru ziua d și returnează soup."""
@@ -309,7 +293,6 @@ def choose_best_time(box) -> str | None:
     if not fragments:
         fragments = [" ".join(box.stripped_strings)]
     text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
-
     # 2) Căutăm etichete explicite cu HH:MM
     labeled = []
     label_regex = re.compile(
@@ -322,27 +305,21 @@ def choose_best_time(box) -> str | None:
         if "ST" in label_zone:     # prioritate maximă pentru ST
             return hhmm
         labeled.append(hhmm)
-
     if labeled:
         return labeled[0]          # prima etichetă găsită (KO/START/etc.)
-
     # 3) Fără etichete: strângem TOATE HH:MM
     all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
     if not all_times:
         return None
-
     def to_minutes(hhmm: str) -> int:
         h, m = hhmm.split(":")
         return int(h) * 60 + int(m)
-
     # unice + sortate
     candidates = sorted(set(all_times), key=to_minutes)
-
     # preferăm o fereastră "de zi": 09:00–23:59
     day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
     if day_window:
         return day_window[0]       # cea mai mică din fereastră (startul)
-
     # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
     return candidates[-1]
 
@@ -354,7 +331,6 @@ def find_los_competition(box) -> str:
     """
     KEY_CLASS = ("title", "head", "comp", "league", "country")
     KEY_WORDS = r"(UEFA|Liga|League|Cup|Cupa|Serie|Bundesliga|Premier|LaLiga|Conference|Europa|World|Qualifier|Qualification|Play[- ]?Off|Round|Week|Group|Women|Cupa|Romaniei|Puchar|Pohar|Copa)"
-
     node = box.find_previous(["div", "h1", "h2", "h3", "h4", "strong"])
     checks = 0
     while node and checks < 40:  # nu ne ducem prea departe
@@ -371,7 +347,6 @@ def find_los_competition(box) -> str:
         checks += 1
     return ""
 
-
 def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
     games = []
     for box in soup.select("div.blockfix"):
@@ -379,7 +354,6 @@ def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
         time_str = choose_best_time(box)
         if not time_str:
             continue
-
         # ECHIPE
         fleft = box.select_one(".fix_text .fLeft")
         if not fleft:
@@ -389,17 +363,14 @@ def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
         if not m_teams:
             continue
         home, away = m_teams.group(1).strip(), m_teams.group(2).strip()
-
         # CANALE
         channels = []
         for a in box.select(".fLeft_live a"):
             txt = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
             if len(txt) >= 2:
                 channels.append(txt)
-
         # COMPETIȚIA (heuristică din heading-urile anterioare)
         comp = find_los_competition(box)
-
         games.append({
             "source": "LiveOnSat",
             "time_local": parse_time_local(date_iso, time_str),
@@ -410,15 +381,12 @@ def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
             "competition": comp,     # <— acum încercăm să o avem și din L-o-S
             "channels": highlight_first(channels)
         })
-
     log(f"LiveOnSat parsed games: {len(games)}")
     return games
-
 
 # =========================================================
 #                         MERGE
 # =========================================================
-
 def _date_part(g: dict) -> str:
     """YYYY-MM-DD din time_local."""
     return (g.get("time_local") or "")[:10]
@@ -441,20 +409,16 @@ def _mins_diff(g1: dict, g2: dict) -> int:
     dt1, dt2 = _dt_from_game(g1), _dt_from_game(g2)
     return int(abs((dt1 - dt2).total_seconds()) // 60)
 
-
 def is_same_game(g1, g2) -> bool:
     """Aceeași partidă dacă kick-off-urile sunt la max ±65 min și echipele se potrivesc fuzzy."""
     # timp: tolerăm diferență de până la 65 minute (timezone/selector)
     if _mins_diff(g1, g2) > 300:
         return False
-
     a1, b1 = clean_name(g1["home"]), clean_name(g1["away"])
     a2, b2 = clean_name(g2["home"]), clean_name(g2["away"])
-
     direct = (_token_set_ratio(a1, a2) + _token_set_ratio(b1, b2)) / 2
     cross  = (_token_set_ratio(a1, b2) + _token_set_ratio(b1, a2)) / 2
     return max(direct, cross) >= 70
-
 
 # === adaugă asta undeva deasupra lui merge_all (ex. sub is_same_game) ===
 def pick_time_display(g: dict) -> str:
@@ -474,7 +438,6 @@ def pick_time_display(g: dict) -> str:
 # === ÎNLOCUIEȘTE complet funcția merge_all cu varianta de mai jos ===
 def merge_all(los, se):
     merged, used = [], [False] * len(se)
-
     for g in los:
         matched_h = None
         matched_i = -1
@@ -485,21 +448,17 @@ def merge_all(los, se):
                 matched_h = h
                 matched_i = i
                 break
-
         # începem cu datele din LiveOnSat
         ch = list(dict.fromkeys(g["channels"]))
         sources = {"LiveOnSat"}
-
         # ora/ziua pentru output
         tdisp = _hhmm_from_game(g)
         date_iso = _date_part(g) or f"{now_vienna():%Y-%m-%d}"
-
         # competiția – după regulile cerute:
         # - doar LiveOnSat  -> competiția L-o-S
         # - doar SportEventz -> competiția S-E  (vezi bucla de mai jos)
         # - ambele -> competiția S-E
         comp = g.get("competition", "") or ""
-
         if matched_h is not None:
             used[matched_i] = True
             # unește canalele și sursele
@@ -509,7 +468,6 @@ def merge_all(los, se):
             tdisp = _hhmm_from_game(matched_h) or tdisp
             # competiție: preferăm SportEventz când avem ambele
             comp = matched_h.get("competition", "") or comp
-
         merged.append({
             "time_local": f"{date_iso} {tdisp}",
             "time_display": tdisp,
@@ -518,7 +476,6 @@ def merge_all(los, se):
             "channels": highlight_first(ch),
             "sources": sorted(sources),
         })
-
     # ce rămâne doar în SportEventz
     for i, h in enumerate(se):
         if used[i]:
@@ -531,21 +488,18 @@ def merge_all(los, se):
             "channels": highlight_first(h["channels"]),
             "sources": ["SportEventz"],
         })
-
     merged.sort(key=lambda x: (x["time_local"], x["teams_display"].lower()))
     return merged
-
-
-
-
 
 # =========================================================
 #                         MAIN
 # =========================================================
-def main():
+def main(query_date_str=None):
     try:
-        # --- dată din linia de comandă (YYYY-MM-DD) sau azi (Viena) ---
-        if len(sys.argv) >= 2:
+        # --- dată din argument sau azi (Viena) ---
+        if query_date_str:
+            query_date = date.fromisoformat(query_date_str)
+        elif len(sys.argv) >= 2:
             query_date = date.fromisoformat(sys.argv[1])
         else:
             query_date = now_vienna().date()
@@ -556,10 +510,8 @@ def main():
         # --- fetch + parse pentru ziua cerută ---
         los_soup = fetch_liveonsat_html(query_date)
         se_soup  = fetch_sporteventz_html(query_date)
-
         los = parse_liveonsat_soup(los_soup, date_iso);   log(f"LiveOnSat: {len(los)}")
         se  = parse_sporteventz_soup(se_soup, date_iso);  log(f"SportEventz: {len(se)}")
-
         merged = merge_all(los, se)
         log(f"Merged total: {len(merged)}")
 
@@ -570,10 +522,12 @@ def main():
             "timezone": "Europe/Vienna (GMT+2)",
             "games": merged
         }
+
         with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2)
+
         log("OK: JSON written.")
-        return 0
+        return out  # Return the data
 
     except Exception as e:
         # scriem eroarea în merged.json ca UI-ul să aibă ce citi
@@ -587,7 +541,7 @@ def main():
         }
         with open(os.path.join(WEB_DATA, "merged.json"), "w", encoding="utf-8") as f:
             json.dump(err, f, ensure_ascii=False, indent=2)
-        return 1
+        return err  # Return the error
 
 if __name__ == "__main__":
     sys.exit(main())
