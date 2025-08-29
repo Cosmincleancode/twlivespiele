@@ -264,6 +264,27 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
 # =========================================================
 #                       LIVEONSAT (2day.php)
 # =========================================================
+import requests
+from bs4 import BeautifulSoup
+import re
+import os
+from datetime import date
+import time  # Import the time module
+
+# Assuming UA, WEB_DATA, log, parse_time_local, highlight_first are defined elsewhere in your code
+# Replace these with your actual definitions
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'  # Example User-Agent
+WEB_DATA = "./web_data"  # Example path, replace with your actual path
+
+def log(message):
+    print(message)
+
+def parse_time_local(date_iso, time_str):
+    return f"{date_iso} {time_str}"
+
+def highlight_first(channels):
+    return channels
+
 def liveonsat_url_for_day(d: date) -> str:
     dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
     return ("https://liveonsat.com/2day.php?"
@@ -273,12 +294,18 @@ def liveonsat_url_for_day(d: date) -> str:
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     """Cere pagina 2day.php pentru ziua d și returnează soup."""
     url = liveonsat_url_for_day(d)
-    r = requests.get(url, headers={"User-Agent": UA}, timeout=30)
-    log(f"liveonsat: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
-    r.raise_for_status()
-    open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
-    return BeautifulSoup(r.text, "lxml")
-    
+    headers = {"User-Agent": UA}
+    try:
+        time.sleep(2)  # Wait 2 seconds before each request
+        r = requests.get(url, headers=headers, timeout=30)
+        r.raise_for_status()
+        log(f"liveonsat: HTTP {r.status_code}, bytes={len(r.content)}, url={url}")
+        open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
+        return BeautifulSoup(r.text, "lxml")
+    except requests.exceptions.RequestException as e:
+        log(f"Error fetching {url}: {e}")
+        return None
+
 def choose_best_time(box) -> str | None:
     """
     Extrage ora corectă dintr-un 'box' LiveOnSat.
@@ -293,6 +320,7 @@ def choose_best_time(box) -> str | None:
     if not fragments:
         fragments = [" ".join(box.stripped_strings)]
     text = "  ".join(fragments).replace("\xa0", " ")  # NBSP -> spațiu normal
+
     # 2) Căutăm etichete explicite cu HH:MM
     labeled = []
     label_regex = re.compile(
@@ -307,6 +335,7 @@ def choose_best_time(box) -> str | None:
         labeled.append(hhmm)
     if labeled:
         return labeled[0]          # prima etichetă găsită (KO/START/etc.)
+
     # 3) Fără etichete: strângem TOATE HH:MM
     all_times = re.findall(r"\b(\d{1,2}:\d{2})\b", text)
     if not all_times:
@@ -314,12 +343,15 @@ def choose_best_time(box) -> str | None:
     def to_minutes(hhmm: str) -> int:
         h, m = hhmm.split(":")
         return int(h) * 60 + int(m)
+
     # unice + sortate
     candidates = sorted(set(all_times), key=to_minutes)
+
     # preferăm o fereastră "de zi": 09:00–23:59
     day_window = [t for t in candidates if 9*60 <= to_minutes(t) <= 23*60+59]
     if day_window:
         return day_window[0]       # cea mai mică din fereastră (startul)
+
     # fallback: cea mai mare (ex. de seară) – mai realistă decât 05:00
     return candidates[-1]
 
