@@ -154,4 +154,8 @@ def reload_data():
         return jsonify({"status": "error", "elapsed": elapsed, "stderr": stderr}), 500
 
     log(f"Reload OK for {query_date} in {elapsed}s")
-    return jsonify({"status": "ok", "elapsed": elapse
+    return jsonify({"status": "ok", "elapsed": elapsed, "stderr": ""}), 20
+
+# ---------- Local dev ----------
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5050, debug=True)
