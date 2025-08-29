@@ -3,69 +3,110 @@
 <head>
   <meta charset="utf-8" />
   <title>tipwin Live Spiele</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css?v=8">
-
+  <style>
+    /* Basic responsive styles - DO NOT CHANGE COLORS */
+    body {
+      margin: 0; /* Remove default body margins */
+    }
+    .topbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    .brand {
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+    }
+    .counters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .counters span {
+      margin: 5px;
+    }
+    .signature {
+      text-align: center;
+      font-size: 0.8em;
+    }
+    .controls .row {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px;
+    }
+    .controls .row > * {
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (min-width: 768px) {
+      .topbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        text-align: left;
+      }
+      .counters {
+        flex-direction: row;
+        margin-top: 0;
+      }
+      .controls .row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .controls .row > * {
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <img src="logo.jpg" alt="TipWin" class="logo"/>
-    <span class="title">Live Spiele</span>
-  </div>
-  <div class="counters">
-    <span id="c_los">LiveOnSat: 0</span>
-    <span id="c_se">SportEventz: 0</span>
-    <span id="c_total" class="pill">Total: 0</span>
-    <button id="reloadBtn">Reload</button>
-    <span id="today"></span>
-  </div>
-  <div class="signature">page realised by Cosmin</div>
-  
   <header class="topbar">
-  <div class="brand">
-    <img src="logo.jpg" alt="TipWin" class="logo"/>
-    <span class="title">Live Spiele</span>
-  </div>
-  <div class="counters">
-    <span id="c_los">LiveOnSat: 0</span>
-    <span id="c_se">SportEventz: 0</span>
-    <span id="c_total" class="pill">Total: 0</span>
-    <button id="reloadBtn">Reload</button>
-    <span id="today"></span>
-  </div>
-  <div class="signature">page realised by Cosmin</div>
-
-  <!-- ⚽ mingea care traversează bannerul -->
-  <div class="reload-ball" aria-hidden="true">⚽</div>
-</header>
-
-  
-</header>
-
-<section class="controls">
-  <div class="row">
-    <label>Datum</label>
-    <input type="date" id="datePick"/>
-    <div class="searchbox">
-      <input id="q" placeholder="z.B. Bayern, Premier League, DAZN ..." />
+    <div class="brand">
+      <img src="logo.jpg" alt="TipWin" class="logo"/>
+      <span class="title">Live Spiele</span>
     </div>
-    <div class="filters">
-      <button data-filter="DAZN" class="chip">DAZN</button>
-      <button data-filter="SKY SPORT" class="chip">SKY SPORT</button>
-      <button data-filter="*" class="chip chip-active">ALLES</button>
+    <div class="counters">
+      <span id="c_los">LiveOnSat: 0</span>
+      <span id="c_se">SportEventz: 0</span>
+      <span id="c_total" class="pill">Total: 0</span>
+      <button id="reloadBtn">Reload</button>
+      <span id="today"></span>
     </div>
-  </div>
-</section>
-
-<section id="list" class="list"></section>
-
-<section class="logbox">
-  <h3>Reload Log</h3>
-  <pre id="log"></pre>
-</section>
-
-<script src="app.js"></script>
+    <div class="signature">page realised by Cosmin</div>
+    <div class="reload-ball" aria-hidden="true">⚽</div>
+  </header>
+  <section class="controls">
+    <div class="row">
+      <label>Datum</label>
+      <input type="date" id="datePick"/>
+      <div class="searchbox">
+        <input id="q" placeholder="z.B. Bayern, Premier League, DAZN ..." />
+      </div>
+      <div class="filters">
+        <button data-filter="DAZN" class="chip">DAZN</button>
+        <button data-filter="SKY SPORT" class="chip">SKY SPORT</button>
+        <button data-filter="*" class="chip chip-active">ALLES</button>
+      </div>
+    </div>
+  </section>
+  <section id="list" class="list"></section>
+  <section class="logbox">
+    <h3>Reload Log</h3>
+    <pre id="log"></pre>
+  </section>
+  <script src="app.js"></script>
 </body>
 </html>
-<script src="app.js?v=4"></script>
