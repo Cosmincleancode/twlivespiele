@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory, jsonify, request
 import subprocess, os, time, sys, json
+import scraper.scraper as scraper  # Import the scraper
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 
@@ -37,19 +38,33 @@ def api_games():
     query_date = request.args.get("date")
     if query_date:
         start = time.time()
-        proc = subprocess.run(
-            [sys.executable, os.path.join("scraper", "scraper.py"), query_date],
-            cwd=os.path.dirname(os.path.abspath(__file__)),
-            capture_output=True, text=True, shell=False, timeout=180
-        )
-        with open(MERGED, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        data["_meta"] = {
-            "elapsed": round(time.time()-start, 2),
-            "status": "ok" if proc.returncode == 0 else "error",
-            "stderr": (proc.stderr or "")[-1000:]
-        }
-        return jsonify(data), (200 if proc.returncode == 0 else 500)
+        # Call the scraper function directly
+        result = scraper.main(query_date)
+        elapsed = round(time.time() - start, 2)
+
+        if "error" in result:
+            # Handle errors from the scraper
+            data = {
+                "date": query_date,
+                "generated_at": result.get("generated_at"),
+                "error": result.get("error"),
+                "games": []
+            }
+            data["_meta"] = {
+                "elapsed": elapsed,
+                "status": "error",
+                "stderr": result.get("error")  # Or any relevant error info
+            }
+            return jsonify(data), 500
+        else:
+            # Successful scrape
+            data = result
+            data["_meta"] = {
+                "elapsed": elapsed,
+                "status": "ok",
+                "stderr": ""
+            }
+            return jsonify(data), 200
     # altfel, doar servim fișierul curent
     return send_from_directory(DATA_DIR, "merged.json")
 
@@ -62,21 +77,34 @@ def log_file():
 def reload_data():
     payload = request.get_json(silent=True) or {}
     query_date = payload.get("date")
-    args = [sys.executable, os.path.join("scraper", "scraper.py")]
-    if query_date:
-        args.append(query_date)
+
     start = time.time()
-    proc = subprocess.run(
-        args,
-        cwd=os.path.dirname(os.path.abspath(__file__)),
-        capture_output=True, text=True, shell=False, timeout=180
-    )
-    return jsonify({
-        "status": "ok" if proc.returncode == 0 else "error",
-        "elapsed": round(time.time()-start, 2),
-        "stdout": (proc.stdout or "")[-2000:],
-        "stderr": (proc.stderr or "")[-2000:],
-    }), (200 if proc.returncode == 0 else 500)
+    # Call the scraper function directly
+    result = scraper.main(query_date)
+    elapsed = round(time.time() - start, 2)
+
+    if "error" in result:
+        # Handle errors from the scraper
+        status = "error"
+        stdout = ""
+        stderr = result.get("error")  # Or any relevant error info
+        return jsonify({
+            "status": status,
+            "elapsed": elapsed,
+            "stdout": stdout,
+            "stderr": stderr,
+        }), 500
+    else:
+        # Successful scrape
+        status = "ok"
+        stdout = ""
+        stderr = ""
+        return jsonify({
+            "status": status,
+            "elapsed": elapsed,
+            "stdout": stdout,
+            "stderr": stderr,
+        }), 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=True)
