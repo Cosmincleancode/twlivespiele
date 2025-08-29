@@ -92,7 +92,8 @@ def reload_data():
     if query_date:
         try:
             # Validate the date format
-            date.fromisoformat(query_date)
+            date_object = date.fromisoformat(query_date)
+            log(f"Date {date_object} is valid")
         except ValueError:
             return jsonify({"error": "Invalid date format. Use YYYY-MM-DD."}), 400
 
@@ -128,6 +129,5 @@ def reload_data():
             }), 200
     else:
         return jsonify({"error": "Date parameter is missing."}), 400
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=True)
