@@ -262,31 +262,13 @@ def parse_sporteventz_soup(soup: BeautifulSoup, date_iso: str):
 # =========================================================
 #                       LIVEONSAT (2day.php)
 # =========================================================
-import requests
-from bs4 import BeautifulSoup
-import re
-import os
-from datetime import date
-import time  # Import the time module
-# Assuming UA, WEB_DATA, log, parse_time_local, highlight_first are defined elsewhere in your code
-# Replace these with your actual definitions
-UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'  # Example User-Agent
-WEB_DATA = "./web_data"  # Example path, replace with your actual path
 
-def log(message):
-    print(message)
-
-def parse_time_local(date_iso, time_str):
-    return f"{date_iso} {time_str}"
-
-def highlight_first(channels):
-    return channels
 
 def liveonsat_url_for_day(d: date) -> str:
     dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
     return ("https://liveonsat.com/2day.php?"
             f"start_dd={dd}&start_mm={mm}&start_yyyy={yy}"
-            f"&end_dd={dd}&end_mm={mm}&start_yyyy={yy}")
+            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")  # <-- end_yyyy (NOT start_yyyy)
 
 def fetch_liveonsat_html(d: date) -> BeautifulSoup:
     """Cere pagina 2day.php pentru ziua d și returnează soup."""
