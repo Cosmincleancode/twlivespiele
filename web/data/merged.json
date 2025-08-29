@@ -1,16 +1,30 @@
 {
   "date": "2025-08-29",
-  "generated_at": "2025-08-28 19:44:57",
+  "generated_at": "2025-08-29 11:40:22",
   "counters": {
-    "LiveOnSat": 60,
-    "SportEventz": 33,
-    "Total": 93
+    "LiveOnSat": 47,
+    "SportEventz": 49,
+    "Total": 66
   },
   "timezone": "Europe/Vienna (GMT+2)",
   "games": [
     {
-      "time_local": "2025-08-29 07:15",
-      "time_display": "07:15",
+      "time_local": "2025-08-29 02:15",
+      "time_display": "02:15",
+      "teams_display": "Unión Santa Fe v River Plate",
+      "competition": "Argentinien, Copa Argentina",
+      "channels": [
+        "Sport TV 1 Portugal HD",
+        "Sport TV1 Portugal HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 13:15",
+      "time_display": "13:15",
       "teams_display": "Sabah v Melaka FC",
       "competition": "Malaysian Super League - Week 1",
       "channels": [
@@ -21,8 +35,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 07:30",
-      "time_display": "07:30",
+      "time_local": "2025-08-29 13:30",
+      "time_display": "13:30",
       "teams_display": "Poltava v Zorya Luhansk",
       "competition": "Ukrainian Premier League - Week 4",
       "channels": [
@@ -34,8 +48,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 08:00",
-      "time_display": "08:00",
+      "time_local": "2025-08-29 14:00",
+      "time_display": "14:00",
       "teams_display": "Negeri Sembilan v Kuching City",
       "competition": "Malaysian Super League - Week 4",
       "channels": [
@@ -46,8 +60,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 09:30",
-      "time_display": "09:30",
+      "time_local": "2025-08-29 15:30",
+      "time_display": "15:30",
       "teams_display": "Grobina v Jelgava",
       "competition": "Latvian Virsliga - Week 28",
       "channels": [
@@ -58,8 +72,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 09:30",
-      "time_display": "09:30",
+      "time_local": "2025-08-29 15:30",
+      "time_display": "15:30",
       "teams_display": "Metta/LU v FK Liepaja",
       "competition": "Latvian Virsliga - Week 28",
       "channels": [
@@ -70,21 +84,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 09:30",
-      "time_display": "09:30",
-      "teams_display": "Montana v Dobrudzha",
-      "competition": "Bulgarian First League - Week 7",
-      "channels": [
-        "Diema Sport HD",
-        "SportKlub 6 Slovenija"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 10:00",
-      "time_display": "10:00",
+      "time_local": "2025-08-29 16:00",
+      "time_display": "16:00",
       "teams_display": "Kudrivka v Karpaty Lviv",
       "competition": "Ukrainian Premier League - Week 4",
       "channels": [
@@ -96,8 +97,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 10:00",
-      "time_display": "10:00",
+      "time_local": "2025-08-29 16:00",
+      "time_display": "16:00",
       "teams_display": "Lokomotiv Moscow v Zenit St Petersburg",
       "competition": "Russian Womens Cup - Semi Final",
       "channels": [
@@ -108,8 +109,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 10:00",
-      "time_display": "10:00",
+      "time_local": "2025-08-29 16:00",
+      "time_display": "16:00",
       "teams_display": "Sudan v Senegal",
       "competition": "CAF African Nations Championships - 3rd Place Play-Off",
       "channels": [
@@ -121,21 +122,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 10:30",
-      "time_display": "10:30",
-      "teams_display": "Al Arabi v Umm Salal",
-      "competition": "Qatar Stars League - Week 3",
-      "channels": [
-        "beIN Connect MENA HD 📺",
-        "beIN Sports MENA Global HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 10:30",
-      "time_display": "10:30",
+      "time_local": "2025-08-29 16:30",
+      "time_display": "16:30",
       "teams_display": "Aluminij v Koper",
       "competition": "Slovenian 1. SNL - Week 7",
       "channels": [
@@ -146,24 +134,24 @@
       ]
     },
     {
-      "time_local": "2025-08-29 10:50",
-      "time_display": "10:50",
-      "teams_display": "Al Hilal v Al Riyadh",
-      "competition": "Saudi Professional League - Week 1",
+      "time_local": "2025-08-29 16:30",
+      "time_display": "16:30",
+      "teams_display": "Montana v Dobrudzha",
+      "competition": "Bulgarien, First Professional League",
       "channels": [
-        "Setanta Sports Premium HD 📺",
-        "Sport TV1 Portugal HD",
-        "SportKlub 2 Slovenija",
-        "Sporty TV Africa",
-        "SuperSport 2 Albania HD"
+        "Diema Sport 1 Bulgaria",
+        "Diema Sport 1 Bulgaria HD",
+        "Diema Sport HD",
+        "SportKlub 6 Slovenija"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 11:00",
-      "time_display": "11:00",
+      "time_local": "2025-08-29 17:00",
+      "time_display": "17:00",
       "teams_display": "Aarhus Fremad v AaB Aalborg",
       "competition": "Danish 1. Division - Week 8",
       "channels": [
@@ -177,13 +165,87 @@
       ]
     },
     {
-      "time_local": "2025-08-29 11:00",
-      "time_display": "11:00",
+      "time_local": "2025-08-29 17:15",
+      "time_display": "17:15",
+      "teams_display": "NK Rudes v HNK Orijent 1919 Rijeka",
+      "competition": "Kroatien, 2. HNL",
+      "channels": [
+        "Max Sport 1 Croatia HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 17:30",
+      "time_display": "17:30",
+      "teams_display": "Al Arabi v Umm Salal",
+      "competition": "Katar, Stars League",
+      "channels": [
+        "Al Kass One HD",
+        "beIN Connect MENA HD 📺",
+        "beIN Sports MENA Global HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 17:50",
+      "time_display": "17:50",
+      "teams_display": "Al Hilal v Al Riyadh",
+      "competition": "Saudi-Arabien, Saudi Professional League",
+      "channels": [
+        "DAZN 2 Bar Deutsch HD",
+        "DAZN 2 Bar HD Germany",
+        "DAZN France ($/geo/R)",
+        "Sportdigital FUSSBALL HD",
+        "Sportdigital Germany HD",
+        "Band Sports Brazil HD",
+        "Cosmote Sport 7 HD",
+        "ESPN Africa",
+        "M+ #Vamos Bar",
+        "M+ Vamos España HD",
+        "Okko Prime Sport HD ($/geo/R)",
+        "Polsat Sport 2",
+        "Polsat Sport 2 HD",
+        "Setanta Sports 2 Baltic",
+        "Setanta Sports Premium HD 📺",
+        "Setanta Sports Qazaqstan HD",
+        "Spiler 1 TV Hungary",
+        "Sport TV 1 Portugal HD",
+        "Sport TV1 Portugal HD",
+        "Sportitalia Plus HD 📺",
+        "SportKlub 1 Hrvatska HD",
+        "SportKlub 2 Slovenija",
+        "Sporty TV Africa",
+        "Spíler 1 TV Hungary HD",
+        "ST World Football HD",
+        "SuperSport 2 Albania HD",
+        "SuperSport ESPN HD",
+        "Thmanyah 1 HD",
+        "TV2 Play Premium (geo/R) 📺",
+        "Vamos Spain",
+        "Vamos Spain HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
       "teams_display": "ARKA Gdynia v Wisla Plock",
-      "competition": "Polish Ekstraklasa - Week 7",
+      "competition": "Polen, Ekstraklasa",
       "channels": [
         "Arena Premium 1 BiH HD",
+        "Arena Sport 5 Croatia",
+        "Arena Sport 5 Croatia HD",
         "Arena Sport 5 Hrvatska HD",
+        "Canal Plus Sport 3 Poland HD",
+        "Canal Plus Sport 5 Poland HD",
         "Canal+ Sport 3 Polska HD",
         "Canal+ Sport 5 Polska HD",
         "Ekstraklasa TV ($/PPV) 📺",
@@ -191,155 +253,13 @@
         "Sport 2 Ukraine"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 11:00",
-      "time_display": "11:00",
-      "teams_display": "Pohronie v Slávia TU Košice",
-      "competition": "Slovak 2. Liga - Week 6",
-      "channels": [
-        "STVR Šport Slovakia HD 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:00",
-      "time_display": "11:00",
-      "teams_display": "Slask Wroclaw v GKS Tychy",
-      "competition": "Polish 1. Liga - Week 8",
-      "channels": [
-        "TVP Sport Polska HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:00",
-      "time_display": "11:00",
-      "teams_display": "Van BB v Bandirmaspor",
-      "competition": "Türkiye 1. Lig - Week 4",
-      "channels": [
-        "beIN Connect Türkiye 📺",
-        "beIN Sports Türkiye 2 HD",
-        "TRT Spor Türkiye HD 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:30",
-      "time_display": "11:30",
-      "teams_display": "Cremonese v Sassuolo",
-      "competition": "Italian Serie A - Week 2",
-      "channels": [
-        "DAZN 1 Bar Deutsch HD",
-        "DAZN Deutsch ($/geo/R)",
-        "DAZN España ($/geo/R)",
-        "DAZN Great Britain (geo/R) 📺",
-        "DAZN Ireland ($/geo/R) 📺",
-        "DAZN Italia ($/geo/R)",
-        "Arena Premium 1 Slovenija",
-        "Arena Premium 2 BiH HD",
-        "Arena Premium 2 Srbija HD",
-        "Arena Sport 4 Hrvatska HD",
-        "Astro Arena Bola HD",
-        "beIN Sports Australia 3 HD",
-        "Digi Sport 2 Romania HD",
-        "Go3 Sport Open Baltic 📺",
-        "MATCH! Futbol 1 HD",
-        "Megogo Futbol 1 ($/geo/R) 📺",
-        "MTV Katsomon+ ($/geo/R) 📺",
-        "MTV Urheilu 1 Suomi HD",
-        "Paramount+ USA ($/geo/R)",
-        "S Sport+ Streaming",
-        "Sport TV2 Portugal HD",
-        "SuperSport Football HD",
-        "SuperSport MáXimo 360",
-        "Tivibu Spor 1 HD",
-        "Tring Sport 1 HD",
-        "TV2 Play Danmark ($/geo/R) 📺",
-        "TV4 Play Sverige [online] 📺",
-        "VG+ Sport Norge ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:30",
-      "time_display": "11:30",
-      "teams_display": "Hertha Berlin v Elversberg",
-      "competition": "German 2. Bundesliga - Week 4",
-      "channels": [
-        "DAZN España ($/geo/R)",
-        "Sky Sport Bundesliga 3 HD",
-        "Arena 4 Hungary HD",
-        "Arena Premium 3 Srbija HD",
-        "beIN Sports 3 HD (Astro)",
-        "beIN Sports Australia 2 HD",
-        "S Sport+ Streaming",
-        "Sport TV1 Slovenija",
-        "Tivibu Spor 3 HD",
-        "V Sport Football HD",
-        "ViaPlay Danmark HD",
-        "ViaPlay Nederland HD",
-        "ViaPlay Norge HD",
-        "ViaPlay Suomi HD",
-        "ViaPlay Sverige HD",
-        "ViaPlay SÝN Sport HD",
-        "YouTube: German Football (geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:30",
-      "time_display": "11:30",
-      "teams_display": "Nuremberg v Paderborn",
-      "competition": "German 2. Bundesliga - Week 4",
-      "channels": [
-        "DAZN 2 Portugal HD",
-        "Sky Sport Bundesliga 4 HD",
-        "Arena Premium 5 Srbija HD",
-        "beIN Sports Australia 1 HD",
-        "Setanta Sports+ Ukraine HD",
-        "Sport TV2 Slovenija",
-        "Tivibu Spor 4 HD",
-        "ViaPlay Danmark HD",
-        "ViaPlay Nederland HD",
-        "ViaPlay Norge HD",
-        "ViaPlay Suomi HD",
-        "ViaPlay Sverige HD",
-        "ViaPlay SÝN Sport HD",
-        "YouTube: German Football (geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 11:45",
-      "time_display": "11:45",
-      "teams_display": "Botev Vratsa v Cherno More Varna",
-      "competition": "Bulgarian First League - Week 7",
-      "channels": [
-        "Diema Sport HD",
-        "SportKlub 6 Slovenija"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
       "teams_display": "Hvidovre v Hobro",
       "competition": "Danish 1. Division - Week 8",
       "channels": [
@@ -353,8 +273,8 @@
       ]
     },
     {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
       "teams_display": "Kolding v Hillerød",
       "competition": "Danish 1. Division - Week 8",
       "channels": [
@@ -368,8 +288,36 @@
       ]
     },
     {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
+      "teams_display": "Pohronie v Slávia TU Košice",
+      "competition": "Slowakei, 2. Liga",
+      "channels": [
+        "RTVS Sport Slovakia HD",
+        "STVR Šport Slovakia HD 📺"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
+      "teams_display": "Slask Wroclaw v GKS Tychy",
+      "competition": "Polen, I liga",
+      "channels": [
+        "TVP Sport Poland HD",
+        "TVP Sport Polska HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
       "teams_display": "Spartak Moscow v CSKA Moscow",
       "competition": "Russian Womens Cup - Semi Final",
       "channels": [
@@ -380,122 +328,171 @@
       ]
     },
     {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
-      "teams_display": "União Leiria v Torreense",
-      "competition": "Portuguese Liga Portugal 2 - Week 4",
+      "time_local": "2025-08-29 18:00",
+      "time_display": "18:00",
+      "teams_display": "Van BB v Bandirmaspor",
+      "competition": "Türkiye, 1. Lig",
       "channels": [
-        "Sport TV+ Portugal"
+        "beIN Connect Türkiye 📺",
+        "beIN Sports Türkiye 2 HD",
+        "TRT Spor",
+        "TRT Spor HD",
+        "TRT Spor Türkiye HD 📺"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
-      "teams_display": "Vejle BK v Viborg",
-      "competition": "Danish Superliga - Week 7",
+      "time_local": "2025-08-29 18:30",
+      "time_display": "18:30",
+      "teams_display": "Cremonese v Sassuolo",
+      "competition": "Italien, Serie A",
       "channels": [
-        "Arena Sport 3 Srbija HD",
+        "DAZN 1 Bar Deutsch HD",
+        "Dazn 1 Bar Germany",
+        "DAZN 1 Italia HD",
+        "DAZN Deutsch ($/geo/R)",
+        "DAZN España ($/geo/R)",
+        "DAZN Great Britain (geo/R) 📺",
+        "DAZN Ireland ($/geo/R) 📺",
+        "DAZN Italia ($/geo/R)",
+        "Arena Premium 1 Slovenija",
+        "Arena Premium 2 BiH HD",
+        "Arena Premium 2 Srbija HD",
+        "Arena Sport 4 Croatia",
+        "Arena Sport 4 Croatia HD",
+        "Arena Sport 4 Hrvatska HD",
+        "Astro Arena Bola HD",
+        "beIN Sports Australia 3 HD",
+        "Cosmote Sport 1 HD",
+        "Digi Sport 2 Romania",
+        "Digi Sport 2 Romania HD",
+        "Eleven Sports 4 Poland HD",
+        "ESPN 4 Brazil HD",
+        "Go3 Sport Open Baltic 📺",
+        "MATCH! Futbol 1 HD",
+        "Max Sport 3 Bulgaria",
+        "MAX Sport 3 Bulgaria HD",
+        "Max Sport 3 Bulgaria HD",
+        "Megogo Futbol 1 ($/geo/R) 📺",
+        "MTV Katsomon+ ($/geo/R) 📺",
+        "MTV Urheilu 1 Suomi HD",
+        "Paramount+ USA ($/geo/R)",
+        "Prima Sport 2",
+        "Prima Sport 2 HD",
+        "Prima Sport RO 2 HD",
+        "PrimaPlay [app] 📺",
+        "S Sport 2 Turkey HD",
+        "S Sport 2 Türkiye HD",
+        "S Sport Turkey",
+        "S Sport+ Streaming",
+        "Sport 2 Israel HD",
+        "Sport TV 2 Portugal HD",
+        "Sport TV2 Portugal HD",
+        "SuperSport Football HD",
+        "SuperSport MáXimo 360",
+        "Tivibu Spor 1 HD",
+        "Tivibu Spor 1 Turk HD",
+        "Tring Sport 1 HD",
+        "TV2 Play Danmark ($/geo/R) 📺",
+        "TV4 Play Sverige [online] 📺",
+        "VG+ Sport Norge ($/geo/R) 📺",
+        "ZBC Channel 2"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 18:30",
+      "time_display": "18:30",
+      "teams_display": "Hertha Berlin v Elversberg",
+      "competition": "Deutschland, 2. Bundesliga",
+      "channels": [
+        "DAZN España ($/geo/R)",
+        "Sky Sport Bundesliga 3 HD",
+        "Arena 4 Hungary",
+        "Arena 4 Hungary HD",
+        "Arena Premium 3 Srbija HD",
+        "beIN Sports 3 HD (Astro)",
+        "beIN Sports Australia 2 HD",
+        "Digi Sport 3 Romania",
+        "Eleven Sports 2 Poland HD",
+        "Nova Sport 6 Czech HD",
+        "Nova Sport 6 Czechia HD",
+        "Nova Sport Bulgaria",
+        "Nova Sport Bulgaria HD",
+        "Okko Futbol HD ($/geo/R)",
+        "Prima Sport 3",
+        "Prima Sport 3 HD",
+        "Prima Sport RO 3 HD",
+        "PrimaPlay [app] 📺",
+        "S Sport Turkey",
+        "S Sport+ Streaming",
+        "Sky Bundesliga 3",
+        "Sky Bundesliga 3 HD",
+        "Sport TV1 Slovenija",
+        "Tivibu Spor 3 HD",
+        "Tivibu Spor 3 Turk HD",
+        "V Sport 2 Suomi HD",
+        "V Sport Football HD",
+        "V Sport Fotboll Sweden HD",
         "ViaPlay Danmark HD",
+        "ViaPlay Nederland HD",
         "ViaPlay Norge HD",
         "ViaPlay Suomi HD",
-        "ViaPlay Sverige HD"
+        "ViaPlay Sverige HD",
+        "ViaPlay SÝN Sport HD",
+        "YouTube: German Football (geo/R) 📺"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 12:00",
-      "time_display": "12:00",
-      "teams_display": "Viktoria Cologne v Jahn Regensburg",
-      "competition": "German 3. Liga - Week 4",
+      "time_local": "2025-08-29 18:30",
+      "time_display": "18:30",
+      "teams_display": "Nuremberg v Paderborn",
+      "competition": "Deutschland, 2. Bundesliga",
       "channels": [
-        "DFB Play TV (geo/R) 📺",
-        "Magenta Sport ($/geo/R) 📺"
+        "DAZN 2 Portugal HD",
+        "Dazn 2 Portugal HD",
+        "Sky Sport Bundesliga 4 HD",
+        "Arena Premium 5 Srbija HD",
+        "beIN Sports Australia 1 HD",
+        "Diema sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria HD",
+        "Nova Sport 4 Czech HD",
+        "Nova Sport 4 Czechia HD",
+        "Setanta Sports 1 Georgia HD",
+        "Setanta Sports+ Ukraine HD",
+        "Sky Bundesliga 4",
+        "Sky Bundesliga 4 HD",
+        "Sport 1 Israel HD",
+        "Sport TV2 Slovenija",
+        "Tivibu Spor 4 HD",
+        "Tivibu Spor 4 Turk HD",
+        "ViaPlay Danmark HD",
+        "ViaPlay Nederland HD",
+        "ViaPlay Norge HD",
+        "ViaPlay Suomi HD",
+        "ViaPlay Sverige HD",
+        "ViaPlay SÝN Sport HD",
+        "YouTube: German Football (geo/R) 📺"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 12:30",
-      "time_display": "12:30",
-      "teams_display": "Elche v Levante",
-      "competition": "Spanish La Liga (Primera) - Week 3",
-      "channels": [
-        "DAZN 1 Portugal HD",
-        "DAZN 2 Bar Deutsch HD",
-        "DAZN España ($/geo/R)",
-        "DAZN USA en Español ($/geo/R)",
-        "Arena Premium 3 BiH HD",
-        "Arena Premium 4 Srbija HD",
-        "Arena Sport 2 Hrvatska HD",
-        "Arena Sport 2 Slovenija HD",
-        "ART Motion Sport 2 HD 📺",
-        "beIN Connect MENA HD 📺",
-        "beIN Sports MENA 3 HD",
-        "Canal+ Sport 2 Polska HD",
-        "Canal+ Sport 4 Polska HD",
-        "ESPN+ USA ($/geo/R)",
-        "MATCH! Futbol 2 HD",
-        "Megogo Futbol 2 ($/geo/R)",
-        "Megogo Sport Ukraine HD 📺",
-        "MTV Katsomon+ ($/geo/R) 📺",
-        "MTV Urheilu 3 Suomi HD",
-        "Premier Sports 1 Ireland HD",
-        "Premier Sports 1 UK HD",
-        "Premier Sports GB Player HD 📺",
-        "S Sport 1 Türkiye HD",
-        "S Sport+ Streaming",
-        "Spíler 2 TV Hungary HD",
-        "SuperSport 4 Albania HD",
-        "SuperSport LaLiga HD",
-        "SuperSport MáXimo 1 HD",
-        "SuperSport MáXimo 3A HD",
-        "TV2 Play Norge ($/geo/R) 📺",
-        "TV2 Play Premium (geo/R) 📺",
-        "TV4 Play Sverige [online] 📺",
-        "ViaPlay Norge HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 12:30",
-      "time_display": "12:30",
-      "teams_display": "Rapid Bucharest v UTA Arad",
-      "competition": "Romanian Superliga - Week 8",
-      "channels": [
-        "Digi Sport 1 Romania HD",
-        "Prima Sport RO 1 HD",
-        "PrimaPlay [app] 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 12:30",
-      "time_display": "12:30",
-      "teams_display": "Real Sociedad II v Almería",
-      "competition": "Spanish La Liga 2 - Week 3",
-      "channels": [
-        "DAZN España ($/geo/R)",
-        "beIN Connect MENA HD 📺",
-        "beIN Sports MENA 5 HD",
-        "LaLiga Hypermotion HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 12:30",
-      "time_display": "12:30",
+      "time_local": "2025-08-29 18:30",
+      "time_display": "18:30",
       "teams_display": "Siwelele v Richards Bay",
       "competition": "South African Premiership - Week 5",
       "channels": [
@@ -506,77 +503,49 @@
       ]
     },
     {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Al Taawoun v Al Nassr",
+      "time_local": "2025-08-29 18:45",
+      "time_display": "18:45",
+      "teams_display": "Botev Vratsa v Cherno More Varna",
+      "competition": "Bulgarien, First Professional League",
+      "channels": [
+        "Diema Sport 1 Bulgaria",
+        "Diema Sport 1 Bulgaria HD",
+        "Diema Sport HD",
+        "SportKlub 6 Slovenija"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 19:00",
+      "time_display": "19:00",
+      "teams_display": "Al Shabab v Al Khaleej",
       "competition": "Saudi Professional League - Week 1",
       "channels": [
-        "Meraj TV",
-        "S Sport+ Streaming",
-        "Setanta Sports Premium HD 📺",
-        "Sport TV3 Portugal HD",
-        "SportKlub 2 Slovenija",
-        "Sporty TV Africa",
-        "SuperSport 5 Albania HD"
+        "SporTV Brazil HD",
+        "Thmanyah 3 HD"
       ],
       "sources": [
         "LiveOnSat"
       ]
     },
     {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
+      "time_local": "2025-08-29 19:00",
+      "time_display": "19:00",
       "teams_display": "Arsenal U-21 v Brighton U-21",
       "competition": "English Premier League 2",
       "channels": [
-        "Arsenal LIVE ($/geo/R) 📺"
+        "Arsenal LIVE ($/geo/R) ðŸ“º"
       ],
       "sources": [
         "LiveOnSat"
       ]
     },
     {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Dunkerque v Troyes",
-      "competition": "French Ligue 2 - Week 4",
-      "channels": [
-        "beIN Connect FRANCE 📺",
-        "beIN Sports France 6 HD max"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Groningen v Heracles Almelo",
-      "competition": "Dutch Eredivisie - Week 4",
-      "channels": [
-        "ESPN 2 Nederland HD",
-        "ESPN Extra Nederland"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Istra 1961 v Gorica",
-      "competition": "Croatian HNL - Week 5",
-      "channels": [
-        "Arena Sport 3 BiH HD",
-        "MAX Sport 1 Hrvatska HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
+      "time_local": "2025-08-29 19:00",
+      "time_display": "19:00",
       "teams_display": "Laval v Clermont Foot",
       "competition": "French Ligue 2 - Week 4",
       "channels": [
@@ -588,493 +557,58 @@
       ]
     },
     {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Montpellier v Amiens",
-      "competition": "French Ligue 2 - Week 4",
+      "time_local": "2025-08-29 19:00",
+      "time_display": "19:00",
+      "teams_display": "União Leiria v Torreense",
+      "competition": "Portugal, Liga Portugal 2",
       "channels": [
-        "beIN Connect FRANCE 📺",
-        "beIN Sports France 2 HD",
-        "beIN Sports MENA Xtra 2 HD"
+        "Sport TV 6 Portugal HD",
+        "Sport TV Plus Portugal",
+        "Sport TV+ Portugal"
       ],
       "sources": [
-        "LiveOnSat"
+        "LiveOnSat",
+        "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Nancy v Pau",
-      "competition": "French Ligue 2 - Week 4",
+      "time_local": "2025-08-29 19:00",
+      "time_display": "19:00",
+      "teams_display": "Vejle BK v Viborg",
+      "competition": "Dänemark, Superligaen",
       "channels": [
-        "beIN Connect FRANCE 📺",
-        "beIN Sports France 8 HD max"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Paks v Kazincbarcika",
-      "competition": "Hungarian NB 1 - Week 6",
-      "channels": [
-        "M4 Sport Hungary HD 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Red Star FC v Annecy",
-      "competition": "French Ligue 2 - Week 4",
-      "channels": [
-        "beIN Connect FRANCE 📺",
-        "beIN Sports France 5 HD max"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:00",
-      "time_display": "13:00",
-      "teams_display": "Rodez v Boulogne",
-      "competition": "French Ligue 2 - Week 4",
-      "channels": [
-        "beIN Connect FRANCE 📺",
-        "beIN Connect France 📺",
-        "beIN Sports France 7 HD max"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "GKS Katowice v Radomiak Radom",
-      "competition": "Polish Ekstraklasa - Week 7",
-      "channels": [
-        "Arena Sport 5 Hrvatska HD",
-        "Canal+ Sport 1 Polska HD",
-        "Canal+ Sport 3 Polska HD",
-        "Ekstraklasa TV ($/PPV) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "Göztepe v Konyaspor",
-      "competition": "Türkiye Süper Lig - Week 4",
-      "channels": [
-        "beIN Connect Türkiye 📺",
-        "beIN Sports Türkiye 1 HD",
-        "SportKlub 1 Slovenija HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "Hamburg v St Pauli",
-      "competition": "German 1. Bundesliga - Week 2",
-      "channels": [
-        "DAZN 2 Portugal HD",
-        "DAZN Canada ($/geo/R)",
-        "DAZN España ($/geo/R)",
-        "Sky Sport Bundesliga 1 HD",
-        "Sky Sport Bundesliga HD",
-        "Sky Sport Bundesliga UHD",
-        "Sky Sport Top Event HD",
-        "Arena 4 Hungary HD",
-        "Arena Premium 3 Srbija HD",
-        "BBC iPlayer (geo/R) 📺",
-        "BBC iPlayer 4K (geo/R) 📺",
-        "BBC Sport Website (geo/R) 📺",
-        "BBC Sport [app]",
-        "beIN Connect Australia 📺",
-        "beIN Connect Hong Kong 📺",
-        "beIN Connect Malaysia 📺",
-        "beIN Connect Thailand 📺",
-        "beIN Connect Türkiye 📺",
-        "beIN Sports 3 HD (Astro)",
-        "ESPN+ USA ($/geo/R)",
-        "Go3 Sport 4 Baltic 📺",
-        "S Sport+ Streaming",
-        "Setanta Sports 2 Eurasia HD",
-        "Setanta Sports+ Ukraine HD",
-        "Sport TV1 Slovenija",
-        "Tivibu Spor 2 HD",
-        "Tring Sport 2 HD",
-        "V Sport Premium HD",
+        "Arena Sport 3 Srbija HD",
+        "TV3 Sport Denmark HD",
         "ViaPlay Danmark HD",
-        "ViaPlay Nederland HD",
-        "ViaPlay Norge HD",
-        "ViaPlay Suomi HD",
-        "ViaPlay Sverige HD",
-        "ViaPlay SÝN Sport HD",
-        "YouTube: German Football (geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "Miedz Legnica v Wisla Kraków",
-      "competition": "Polish 1. Liga - Week 8",
-      "channels": [
-        "TVP Sport Polska HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "Reggiana v Empoli",
-      "competition": "Italian Serie BKT - Week 2",
-      "channels": [
-        "DAZN Italia ($/geo/R)",
-        "5 STARS Israel HD",
-        "Telekanal Futbol HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:30",
-      "time_display": "13:30",
-      "teams_display": "Sariyer v Erzurumspor",
-      "competition": "Türkiye 1. Lig - Week 4",
-      "channels": [
-        "beIN Connect Türkiye 📺",
-        "beIN Sports Türkiye 2 HD",
-        "TRT Spor Türkiye HD 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Athlone Town v Cobh Ramblers",
-      "competition": "Irish First Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Cercle Brugge v Sint-Truiden",
-      "competition": "Belgian Pro League - Week 6",
-      "channels": [
-        "DAZN Belgium ($/geo/R) 📺",
-        "DAZN Pro League 1 HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Cork City v Waterford",
-      "competition": "Irish Premier Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺",
-        "Virgin Media PLAY (geo/R)",
-        "Virgin Media TV [app] (geo/R)",
-        "Virgin Media Two HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Derry City v St Patrick's Athletic",
-      "competition": "Irish Premier Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Dundalk v Kerry",
-      "competition": "Irish First Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Finn Harps v Treaty United",
-      "competition": "Irish First Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Lecce v AC Milan",
-      "competition": "Italian Serie A - Week 2",
-      "channels": [
-        "DAZN 1 Bar Deutsch HD",
-        "DAZN Deutsch ($/geo/R)",
-        "DAZN España ($/geo/R)",
-        "DAZN Great Britain (geo/R) 📺",
-        "DAZN Ireland ($/geo/R) 📺",
-        "DAZN Italia ($/geo/R)",
-        "Sky Sport Calcio HD",
-        "Arena Premium 1 Slovenija",
-        "Arena Premium 2 BiH HD",
-        "Arena Premium 2 Srbija HD",
-        "Arena Sport 4 Hrvatska HD",
-        "Astro Football HD",
-        "Digi Sport 2 Romania HD",
-        "Go3 Sport Open Baltic 📺",
-        "MATCH! Futbol 1 HD",
-        "MATCH! Russia HD",
-        "Megogo Futbol 1 ($/geo/R) 📺",
-        "MTV Katsomon+ ($/geo/R) 📺",
-        "MTV Urheilu 2 Suomi HD",
-        "Paramount+ USA ($/geo/R)",
-        "S Sport+ Streaming",
-        "Setanta Sports 1 Eurasia HD",
-        "Sport TV2 Portugal HD",
-        "SuperSport Football HD",
-        "Tivibu Spor 1 HD",
-        "Tring Sport 2 HD",
-        "TV2 Play Danmark ($/geo/R) 📺",
-        "TV4 Play Sverige [online] 📺",
-        "VG+ Sport Norge ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Lens v Brest",
-      "competition": "French Ligue 1 - Week 3",
-      "channels": [
-        "5 LIVE Israel HD",
-        "Arena Sport 1 Srbija HD",
-        "Arena Sport 3 Hrvatska HD",
-        "Arena Sport 3 Slovenija HD",
-        "Arena Sport 5 BiH HD",
-        "beIN Connect MENA HD ðŸ“º",
-        "beIN Sports MENA 4 HD",
-        "Ligue 1+ ($/geo/R) ðŸ“º",
-        "Megogo Futbol 3 ($/geo/R)",
-        "Sport TV5 Portugal HD",
-        "SuperSport 3 Albania HD",
-        "V Sport 1 Sverige HD",
-        "ViaPlay Danmark HD",
-        "ViaPlay Nederland HD",
         "ViaPlay Norge HD",
         "ViaPlay Suomi HD",
         "ViaPlay Sverige HD"
       ],
       "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "Salford City v Cheltenham",
-      "competition": "English League Two - Week 6",
-      "channels": [
-        "Sky Sports+ TV HD",
-        "Sky Sports+ [via APP]"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 13:45",
-      "time_display": "13:45",
-      "teams_display": "U.C.D. v Bray Wanderers",
-      "competition": "Irish First Division - Week 29",
-      "channels": [
-        "LOI TV ($/geo/R) 📺"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 14:00",
-      "time_display": "14:00",
-      "teams_display": "Leicester City v Birmingham City",
-      "competition": "English Championship - Week 4",
-      "channels": [
-        "Sky Sports Football HD",
-        "Sky Sports Main Event HD",
-        "Sky Sports Main Event UHD",
-        "Arena Sport 1x2 Srbija",
-        "Arena Sport 4 Slovenija HD",
-        "Arena Sport 6 BiH HD",
-        "Astro Grandstand HD",
-        "beIN Sports Australia 2 HD",
-        "beIN Sports MENA Xtra 1 HD",
-        "Setanta Sports Ukraine HD",
-        "Sky Go UK [online]",
-        "Sport TV7 Portugal HD",
-        "SuperSport 1 Albania HD",
-        "SuperSport Variety 3 HD",
-        "V Sport Extra Sverige HD"
-      ],
-      "sources": [
-        "LiveOnSat"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 16:00",
-      "time_display": "16:00",
-      "teams_display": "CS Corvinul Hunedoara v FC Farul Constanta",
-      "competition": "Rumänien, Cupa Romaniei, Qualification",
-      "channels": [
-        "Digi Sport 1 Romania",
-        "Digi Sport 1 Romania HD",
-        "Prima Sport 1",
-        "Prima Sport 1 HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 17:30",
-      "time_display": "17:30",
-      "teams_display": "Al Rayyan SC v AL Duhail SC",
-      "competition": "Katar, Stars League",
-      "channels": [
-        "Al Kass One HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 18:00",
-      "time_display": "18:00",
-      "teams_display": "AC Omonia Nicosia v Wolfsberger AC",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "ORF 1 Austria",
-        "ORF 1 Austria HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 18:30",
-      "time_display": "18:30",
-      "teams_display": "SK Sigma Olomouc v Malmö FF",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "MFF Play Premium",
-        "Nova Sport 5 Czechia HD"
-      ],
-      "sources": [
+        "LiveOnSat",
         "SportEventz"
       ]
     },
     {
       "time_local": "2025-08-29 19:00",
       "time_display": "19:00",
-      "teams_display": "Besiktas JK v FC Lausanne-Sport",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Viktoria Cologne v Jahn Regensburg",
+      "competition": "Deutschland, 3. Liga",
       "channels": [
-        "Show TV",
-        "Show TV HD",
-        "Sport1 Germany",
-        "Sport1 Germany HD"
+        "Arena Sport 2 Slovakia",
+        "Arena Sport 2 Slovakia HD",
+        "DFB Play TV (geo/R) 📺",
+        "Magenta Sport ($/geo/R) 📺"
       ],
       "sources": [
+        "LiveOnSat",
         "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 19:00",
-      "time_display": "19:00",
-      "teams_display": "Samsunspor v Panathinaikos Athen",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "Cosmote Sport 3 HD Greece",
-        "HT Spor Türkiye"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 19:00",
-      "time_display": "19:00",
-      "teams_display": "SK Rapid Wien v Győri ETO FC",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "M4 Sport Hungary",
-        "M4 Sport Hungary HD",
-        "ORF 1 Austria",
-        "ORF 1 Austria HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 19:15",
-      "time_display": "19:15",
-      "teams_display": "Unión Santa Fe v River Plate",
-      "competition": "Argentinean Cup (Copa Argentina) - Round of 16",
-      "channels": [
-        "Sport TV1 Portugal HD"
-      ],
-      "sources": [
-        "LiveOnSat"
       ]
     },
     {
       "time_local": "2025-08-29 19:30",
       "time_display": "19:30",
-      "teams_display": "Al-Sadd SC v Al-Gharafa SC",
+      "teams_display": "Al Shahaniya v AL Wakrah",
       "competition": "Katar, Stars League",
       "channels": [
         "Al Kass Two HD"
@@ -1086,77 +620,280 @@
     {
       "time_local": "2025-08-29 19:30",
       "time_display": "19:30",
-      "teams_display": "AZ Alkmar v Levski Sofia",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Elche v Levante",
+      "competition": "Spanien, LaLiga",
       "channels": [
-        "Diema Sport 1 Bulgaria",
-        "Diema Sport 1 Bulgaria HD",
-        "Ziggo Sport 2 Netherlands",
-        "Ziggo Sport 2 Netherlands HD"
+        "DAZN 1 Portugal HD",
+        "Dazn 1 Portugal HD",
+        "DAZN 2 Bar Deutsch HD",
+        "DAZN España ($/geo/R)",
+        "DAZN LaLiga HD Spain",
+        "DAZN LaLiga Spain",
+        "DAZN USA en Español ($/geo/R)",
+        "Arena Premium 3 BiH HD",
+        "Arena Premium 4 Srbija HD",
+        "Arena Sport 2 Croatia",
+        "Arena Sport 2 Croatia HD",
+        "Arena Sport 2 Hrvatska HD",
+        "Arena Sport 2 Slovenija HD",
+        "ART Motion Sport 2 HD 📺",
+        "beIN Connect MENA HD 📺",
+        "beIN Sports MENA 3 HD",
+        "Canal Plus Sport 2 Poland HD",
+        "Canal Plus Sport 4 Poland HD",
+        "Canal+ Sport 2 Polska HD",
+        "Canal+ Sport 4 Polska HD",
+        "Digi Sport 4 Romania",
+        "ESPN+ USA ($/geo/R)",
+        "Idman TV HD",
+        "MATCH! Futbol 2 HD",
+        "Max Sport 2 Bulgaria",
+        "MAX Sport 2 Bulgaria HD",
+        "Max Sport 2 Bulgaria HD",
+        "Megogo Futbol 2 ($/geo/R)",
+        "Megogo Sport Ukraine HD 📺",
+        "MTV Katsomon+ ($/geo/R) 📺",
+        "MTV Urheilu 3 Suomi HD",
+        "Nova Sport 5 Czech HD",
+        "Nova Sport 5 Czechia HD",
+        "Premier Sports 1 Ireland HD",
+        "Premier Sports 1 UK HD",
+        "Premier Sports GB Player HD 📺",
+        "S Sport 1 Türkiye HD",
+        "S Sport Turkey",
+        "S Sport Turkey HD",
+        "S Sport+ Streaming",
+        "Silk Sport 1 HD",
+        "Spiler 2 TV Hungary",
+        "Sportkanalen Sweden HD",
+        "Spíler 2 TV Hungary HD",
+        "ST Sports Premium HD",
+        "SuperSport 4 Albania HD",
+        "SuperSport LaLiga HD",
+        "SuperSport MáXimo 1 HD",
+        "SuperSport MáXimo 3A HD",
+        "TV2 Play Norge ($/geo/R) 📺",
+        "TV2 Play Premium (geo/R) 📺",
+        "TV2 Sport Premium 2 Norway HD",
+        "TV4 Play Sverige [online] 📺",
+        "ViaPlay Norge HD"
       ],
       "sources": [
+        "LiveOnSat",
         "SportEventz"
       ]
     },
     {
       "time_local": "2025-08-29 19:30",
       "time_display": "19:30",
-      "teams_display": "CS Universitatea Craiova 1948 v Istanbul Basaksehir FK",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Rapid Bucharest v UTA Arad",
+      "competition": "Rumänien, Liga I",
       "channels": [
         "Digi Sport 1 Romania",
         "Digi Sport 1 Romania HD",
         "Prima Sport 1",
         "Prima Sport 1 HD",
-        "TRT 1",
-        "TRT 1 HD"
+        "Prima Sport RO 1 HD",
+        "PrimaPlay [app] 📺"
       ],
       "sources": [
+        "LiveOnSat",
         "SportEventz"
       ]
     },
     {
       "time_local": "2025-08-29 19:30",
       "time_display": "19:30",
-      "teams_display": "FC CFR 1907 Cluj v BK Häcken",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Real Sociedad II v Almería",
+      "competition": "Spanien, LaLiga 2",
       "channels": [
-        "Digi Sport 2 Romania",
-        "Digi Sport 2 Romania HD",
-        "Prima Sport 2",
-        "Prima Sport 2 HD"
+        "DAZN España ($/geo/R)",
+        "beIN Connect MENA HD 📺",
+        "beIN Sports MENA 5 HD",
+        "LaLiga Hypermotion HD",
+        "LaLiga TV Hypermotion"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "ADO Den Haag v Helmond Sport",
+      "competition": "Niederlande, Eerste Divisie",
+      "channels": [
+        "Star Channel Netherlands"
       ],
       "sources": [
         "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 19:30",
-      "time_display": "19:30",
-      "teams_display": "Ludogorets 1945 Razgrad v FK Shkendija",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Al Taawoun v Al Nassr",
+      "competition": "Saudi-Arabien, Saudi Professional League",
       "channels": [
-        "Diema sport 3 Bulgaria",
-        "Diema Sport 3 Bulgaria",
-        "Diema Sport 3 Bulgaria HD",
-        "MRT 3"
+        "DAZN 2 Bar Deutsch HD",
+        "DAZN 2 Bar HD Germany",
+        "DAZN France ($/geo/R)",
+        "Sportdigital FUSSBALL HD",
+        "Sportdigital Germany HD",
+        "Band Sports Brazil HD",
+        "Cosmote Sport 9 HD",
+        "ESPN Africa",
+        "M+ Liga de Campeones HD",
+        "Max Sport 1 Bulgaria",
+        "MAX Sport 1 Bulgaria HD",
+        "Max Sport 1 Bulgaria HD",
+        "Meraj TV",
+        "Movistar Plus+ HD",
+        "Persiana Sport HD",
+        "Polsat Sport Premium 1 HD",
+        "Polsat Sport Premium 1 Poland HD",
+        "S Sport Turkey",
+        "S Sport+ Streaming",
+        "Setanta Sports Premium HD ðŸ“º",
+        "Setanta Sports Qazaqstan HD",
+        "Solh TV",
+        "Spiler 1 TV Hungary",
+        "Sport TV 3 Portugal HD",
+        "Sport TV3 Portugal HD",
+        "Sportitalia Plus HD ðŸ“º",
+        "SportKlub 2 Hrvatska",
+        "SportKlub 2 Slovenija",
+        "Sporty TV Africa",
+        "SpÃ­ler 1 TV Hungary HD",
+        "ST World Football HD",
+        "SuperSport 5 Albania HD",
+        "SuperSport ESPN HD",
+        "Thmanyah 2 HD",
+        "TV2 Play Premium (geo/R) ðŸ“º",
+        "Vamos Spain",
+        "Vamos Spain HD",
+        "Varzish TV Sport HD (tjk)"
       ],
       "sources": [
+        "LiveOnSat",
         "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 19:30",
-      "time_display": "19:30",
-      "teams_display": "PAOK Thessaloniki v HNK Rijeka",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Dunkerque v Troyes",
+      "competition": "Frankreich, Ligue 2",
       "channels": [
-        "Arena Sport 2 Slovakia",
-        "Arena Sport 2 Slovakia HD",
+        "beIN Connect FRANCE 📺",
+        "beIN Sports France 6 HD max",
+        "beIN Sports Max 6 France HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Groningen v Heracles Almelo",
+      "competition": "Niederlande, Eredivisie",
+      "channels": [
+        "ESPN 2 Nederland HD",
+        "ESPN 2 Netherlands",
+        "ESPN 2 Netherlands HD",
+        "ESPN Extra Nederland"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Istra 1961 v Gorica",
+      "competition": "Kroatien, 1.HNL",
+      "channels": [
+        "Arena Sport 3 BiH HD",
         "Max Sport 1 Croatia HD",
-        "Max Sport 2 Croatia HD",
-        "Open Beyond TV",
-        "Open Beyond TV HD"
+        "MAX Sport 1 Hrvatska HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Montpellier v Amiens",
+      "competition": "Frankreich, Ligue 2",
+      "channels": [
+        "beIN Connect FRANCE 📺",
+        "beIN Sports 2 France HD",
+        "beIN Sports France 2 HD",
+        "beIN Sports MENA Xtra 2 HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Nancy v Pau",
+      "competition": "Frankreich, Ligue 2",
+      "channels": [
+        "beIN Connect FRANCE 📺",
+        "beIN Sports France 8 HD max",
+        "beIN Sports Max 8 France HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Paks v Kazincbarcika",
+      "competition": "Ungarn, NB I",
+      "channels": [
+        "M4 Sport Hungary",
+        "M4 Sport Hungary HD",
+        "M4 Sport Hungary HD ðŸ“º"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Red Star FC v Annecy",
+      "competition": "Frankreich, Ligue 2",
+      "channels": [
+        "beIN Connect FRANCE 📺",
+        "beIN Sports France 5 HD max",
+        "beIN Sports Max 5 France HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "Roda JC Kirchrath v FC Eindhoven",
+      "competition": "Niederlande, Eerste Divisie",
+      "channels": [
+        "ESPN 4 Netherlands HD"
       ],
       "sources": [
         "SportEventz"
@@ -1165,15 +902,26 @@
     {
       "time_local": "2025-08-29 20:00",
       "time_display": "20:00",
-      "teams_display": "AC Florenz v FC Polissya",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Rodez v Boulogne",
+      "competition": "Frankreich, Ligue 2",
       "channels": [
-        "SKY sport 254 italy",
-        "Sky Sport 254 Italy HD",
-        "Sky Sport Calcio",
-        "Sky Sport Calcio HD",
-        "TV 8 Italia",
-        "TV 8 Italia HD"
+        "beIN Connect FRANCE 📺",
+        "beIN Connect France 📺",
+        "beIN Sports France 7 HD max",
+        "beIN Sports Max 7 France HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:00",
+      "time_display": "20:00",
+      "teams_display": "SL Benfica v Os Belenenses",
+      "competition": "Portugal, U19 Championship, Phase 1, Gruppe Süd",
+      "channels": [
+        "Canal 11 Portugal HD"
       ],
       "sources": [
         "SportEventz"
@@ -1182,10 +930,10 @@
     {
       "time_local": "2025-08-29 20:00",
       "time_display": "20:00",
-      "teams_display": "AEK Athen v RSC Anderlecht",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Stade Lavallois Mayenne FC v Clermont Foot",
+      "competition": "Frankreich, Ligue 2",
       "channels": [
-        "Cosmote Sport 2 HD Greece"
+        "beIN Sports Max 4 France HD"
       ],
       "sources": [
         "SportEventz"
@@ -1194,115 +942,10 @@
     {
       "time_local": "2025-08-29 20:00",
       "time_display": "20:00",
-      "teams_display": "Bröndby IF v RC Strasbourg Alsace",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Willem II Tilburg v Jong FC Utrecht",
+      "competition": "Niederlande, Eerste Divisie",
       "channels": [
-        "Arena Sport 1 Slovakia HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "BSC Young Boys v SK Slovan Bratislava",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "Dajto HD",
-        "SRF Info Switzerland HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "FC Arda Kardzhali v RKS Rakow Czestochowa",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "Diema Sport 2 Bulgaria",
-        "Diema Sport 2 Bulgaria HD",
-        "TVP 2 HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "FC Banik Ostrava v NK Celje",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "Premier Sport 2 Slovakia HD",
-        "Sport TV 2 Slovenija"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "FC Differdingen 03 v KF Drita",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "ART Sport 1 Albania"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "FC Dynamo Kiew v Maccabi Tel Aviv FC",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "2 Plus 2 Ukraine"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "FC Utrecht v Hsk Zrinjski Mostar",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "Ziggo Sport 1 Netherlands HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "KRC Genk v KKS Lech Posen",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
-      "channels": [
-        "Dazn Pro League 1 FR",
-        "Dazn Pro League 1 France HD",
-        "Dazn Pro League 1 Netherlands",
-        "Dazn Pro League 1 NL",
-        "TVP 3 Poland"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 20:00",
-      "time_display": "20:00",
-      "teams_display": "Rayo Vallecano v Neman Grodno",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "Belarus TV 5",
-        "Teledeporte Spain"
+        "ESPN 3 Netherlands"
       ],
       "sources": [
         "SportEventz"
@@ -1311,13 +954,167 @@
     {
       "time_local": "2025-08-29 20:30",
       "time_display": "20:30",
-      "teams_display": "Fotbal Club FCSB v Aberdeen FC",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "teams_display": "ASPN Miedz Legnica v Wisla Krakau",
+      "competition": "Polen, I liga",
       "channels": [
-        "BBC Scotland",
-        "BBC Scotland HD",
-        "Pro TV Romania",
-        "Pro TV Romania HD"
+        "TVP Sport Poland HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:30",
+      "time_display": "20:30",
+      "teams_display": "FK Austria Wien v SK Sturm Graz",
+      "competition": "Österreich Amateure Amateur, Bundesliga Frauen",
+      "channels": [
+        "ORF Sport Plus",
+        "ORF Sport Plus HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:30",
+      "time_display": "20:30",
+      "teams_display": "GKS Katowice v RKS Radomiak Radom",
+      "competition": "Polen, Ekstraklasa",
+      "channels": [
+        "Arena Sport 5 Croatia",
+        "Arena Sport 5 Croatia HD",
+        "Canal Plus 4k Poland",
+        "Canal Plus Sport 3 Poland HD",
+        "Canal Plus Sport Poland HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:30",
+      "time_display": "20:30",
+      "teams_display": "GÃ¶ztepe v Konyaspor",
+      "competition": "Türkiye, Süper Lig",
+      "channels": [
+        "beIN Connect TÃ¼rkiye ðŸ“º",
+        "beIN Sports 1 Turkey",
+        "beIN Sports 1 Turkey HD",
+        "beIN Sports 1 Turkey HD Ticari",
+        "beIN Sports 1 Turkey Ticari",
+        "beIN Sports TÃ¼rkiye 1 HD",
+        "SportKlub 1 Slovenija HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:30",
+      "time_display": "20:30",
+      "teams_display": "Hamburg v St Pauli",
+      "competition": "Deutschland, Bundesliga",
+      "channels": [
+        "DAZN 2 Portugal HD",
+        "Dazn 2 Portugal HD",
+        "DAZN Canada ($/geo/R)",
+        "DAZN EspaÃ±a ($/geo/R)",
+        "Sky Sport 254 Italia HD",
+        "Sky Sport Bundesliga 1 HD",
+        "Sky Sport Bundesliga HD",
+        "Sky Sport Bundesliga UHD",
+        "Sky Sport Top Event HD",
+        "Arena 4 Hungary",
+        "Arena 4 Hungary HD",
+        "Arena Premium 3 Srbija HD",
+        "BBC iPlayer (geo/R) ðŸ“º",
+        "BBC iPlayer 4K (geo/R) ðŸ“º",
+        "BBC Sport Website (geo/R) ðŸ“º",
+        "BBC Sport [app]",
+        "beIN Connect Australia ðŸ“º",
+        "beIN Connect Hong Kong ðŸ“º",
+        "beIN Connect Malaysia ðŸ“º",
+        "beIN Connect Thailand ðŸ“º",
+        "beIN Connect TÃ¼rkiye ðŸ“º",
+        "beIN Sports 3 HD (Astro)",
+        "beIN Sports Max 10 France HD",
+        "Diema sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria",
+        "Diema Sport 3 Bulgaria HD",
+        "Digi Sport 3 Romania",
+        "Eleven Sports 3 Poland HD",
+        "ESPN+ USA ($/geo/R)",
+        "Go3 Sport 4 Baltic ðŸ“º",
+        "Nova Sport 3 Czech HD",
+        "Nova Sport 3 Czechia HD",
+        "Okko Prime Sport HD ($/geo/R)",
+        "Playsports 1 HD",
+        "Polsat Sport 3 HD",
+        "Prima Sport 4",
+        "Prima Sport 4 HD",
+        "Prima Sport RO 4 HD",
+        "PrimaPlay [app] ðŸ“º",
+        "S Sport Turkey",
+        "S Sport+ Streaming",
+        "Setanta Sports 2 Eurasia HD",
+        "Setanta Sports 2 Georgia HD",
+        "Setanta Sports+ Ukraine HD",
+        "Sky Bundesliga 1",
+        "Sky Bundesliga 1 HD",
+        "Sky Bundesliga HD",
+        "Sky Bundesliga UHD",
+        "Sport 1 Israel HD",
+        "Sport TV1 Slovenija",
+        "SportKlub 1 Hrvatska HD",
+        "ST Sports Life",
+        "Tivibu Spor 2 HD",
+        "Tivibu Spor 2 Turk HD",
+        "Tring Sport 2 HD",
+        "TV3 MAX Denmark",
+        "V Sport 1 Norway HD",
+        "V Sport Premium HD",
+        "V Sport Premium Sweden HD",
+        "V Sport+ Suomi HD",
+        "ViaPlay Danmark HD",
+        "ViaPlay Nederland HD",
+        "ViaPlay Norge HD",
+        "ViaPlay Suomi HD",
+        "ViaPlay Sverige HD"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:30",
+      "time_display": "20:30",
+      "teams_display": "Sariyer v Erzurumspor",
+      "competition": "Türkiye, 1. Lig",
+      "channels": [
+        "beIN Connect TÃ¼rkiye ðŸ“º",
+        "beIN Sports TÃ¼rkiye 2 HD",
+        "TRT Spor",
+        "TRT Spor HD",
+        "TRT Spor TÃ¼rkiye HD ðŸ“º"
+      ],
+      "sources": [
+        "LiveOnSat",
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:45",
+      "time_display": "20:45",
+      "teams_display": "Cercle Brügge v St. Truidense VV",
+      "competition": "Belgien, First Division A",
+      "channels": [
+        "Dazn Pro League 1 FR",
+        "Dazn Pro League 1 France HD",
+        "Dazn Pro League 1 Netherlands",
+        "Dazn Pro League 1 NL"
       ],
       "sources": [
         "SportEventz"
@@ -1326,13 +1123,10 @@
     {
       "time_local": "2025-08-29 20:45",
       "time_display": "20:45",
-      "teams_display": "KS Dinamo Tirana v Jagiellonia Bialystok",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Cork City FC v Waterford FC",
+      "competition": "Irland, Premier Division",
       "channels": [
-        "Polsat Sport 1",
-        "Polsat Sport 1 HD",
-        "Polsat Sport Premium 1 Poland HD",
-        "SuperSport 2 Albania HD"
+        "Virgin Media Two"
       ],
       "sources": [
         "SportEventz"
@@ -1341,11 +1135,55 @@
     {
       "time_local": "2025-08-29 20:45",
       "time_display": "20:45",
-      "teams_display": "Linfield FC v Shelbourne FC",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "RC Lens v Stade Brestois 29",
+      "competition": "Frankreich, Ligue 1",
       "channels": [
-        "Premier Sports 1 Ireland HD",
-        "Premier Sports 1 UK HD"
+        "Arena Sport 3 Croatia",
+        "Arena Sport 3 Croatia HD",
+        "beIN Sports 4 Turkey",
+        "beIN Sports 4 Turkey HD",
+        "beIN Sports 4 Turkey Ticari",
+        "Eleven Sports 4 Poland HD",
+        "Nova Sport 4 Czechia HD",
+        "Nova Sport Bulgaria",
+        "Nova Sport Bulgaria HD",
+        "Sport TV 5 Portugal HD",
+        "SuperSport 3 Albania HD",
+        "V Sport 1 Sweden HD"
+      ],
+      "sources": [
+        "SportEventz"
+      ]
+    },
+    {
+      "time_local": "2025-08-29 20:45",
+      "time_display": "20:45",
+      "teams_display": "US Lecce v AC Mailand",
+      "competition": "Italien, Serie A",
+      "channels": [
+        "Dazn 1 Bar Germany",
+        "Arena Sport 4 Croatia",
+        "Arena Sport 4 Croatia HD",
+        "Digi Sport 2 Romania",
+        "Digi Sport 2 Romania HD",
+        "Eleven Sports 2 Poland HD",
+        "Match 4 HD Hungary",
+        "Match 4 Hungary",
+        "Max Sport 3 Bulgaria",
+        "Max Sport 3 Bulgaria HD",
+        "Polsat Sport Premium 2 Poland HD",
+        "Prima Sport 2",
+        "Prima Sport 2 HD",
+        "S Sport 2 Turkey HD",
+        "S Sport Turkey",
+        "Sport 2 Czech",
+        "Sport 2 Czech HD",
+        "Sport 2 Czechia HD",
+        "Sport TV 2 Portugal HD",
+        "Tivibu Spor 1 Turk HD",
+        "TV2 Sport X",
+        "Ziggo Sport 2 Netherlands",
+        "Ziggo Sport 2 Netherlands HD"
       ],
       "sources": [
         "SportEventz"
@@ -1354,13 +1192,11 @@
     {
       "time_local": "2025-08-29 21:00",
       "time_display": "21:00",
-      "teams_display": "FSV Mainz v Rosenborg BK",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "FK Septemvri Sofia v Lokomotive Sofia",
+      "competition": "Bulgarien, First Professional League",
       "channels": [
-        "SWR Fernsehen Baden-Württemberg",
-        "SWR Fernsehen Baden-Württemberg HD",
-        "SWR Fernsehen Rheinland-Pfalz",
-        "SWR Fernsehen Rheinland-Pfalz HD"
+        "Diema Sport 1 Bulgaria",
+        "Diema Sport 1 Bulgaria HD"
       ],
       "sources": [
         "SportEventz"
@@ -1369,59 +1205,75 @@
     {
       "time_local": "2025-08-29 21:00",
       "time_display": "21:00",
-      "teams_display": "Legia Warschau v Hibernian FC",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "teams_display": "Leicester City v Birmingham City",
+      "competition": "England, Championship",
       "channels": [
-        "TVP 1 Poland HD"
+        "Arena Sport 1 Croatia",
+        "Arena Sport 1 Croatia HD",
+        "Diema Sport 2 Bulgaria",
+        "Diema Sport 2 Bulgaria HD",
+        "Nova Sport 6 Czechia HD",
+        "Sport TV 7 Portugal",
+        "SuperSport 1 Albania HD",
+        "V Sport 2 Norway HD",
+        "V Sport Extra Sweden HD"
       ],
       "sources": [
         "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 21:00",
-      "time_display": "21:00",
-      "teams_display": "SC Braga v Lincoln Red Imps FC",
-      "competition": "Internationale Klubturniere, UEFA Europa League, Playoff Round",
+      "time_local": "2025-08-29 21:15",
+      "time_display": "21:15",
+      "teams_display": "Gil Vicente FC v Moreirense FC",
+      "competition": "Portugal, Primeira Liga",
       "channels": [
-        "Sport TV 1 Portugal HD",
-        "Sport TV 5 Portugal HD"
+        "Sport TV 1 Portugal HD"
       ],
       "sources": [
         "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 21:00",
-      "time_display": "21:00",
-      "teams_display": "Servette FC v FC Shakhtar Donetsk",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "time_local": "2025-08-29 21:30",
+      "time_display": "21:30",
+      "teams_display": "Sporting Gijon v Cultural Leonesa",
+      "competition": "Spanien, LaLiga 2",
       "channels": [
-        "RTS 2 Switzerland HD"
+        "Dazn 3 Portugal HD",
+        "LaLiga TV Hypermotion"
       ],
       "sources": [
         "SportEventz"
       ]
     },
     {
-      "time_local": "2025-08-29 21:00",
-      "time_display": "21:00",
-      "teams_display": "Shamrock Rovers v CD Santa Clara",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
+      "time_local": "2025-08-29 21:30",
+      "time_display": "21:30",
+      "teams_display": "Valencia CF v Getafe CF",
+      "competition": "Spanien, LaLiga",
       "channels": [
-        "Sport TV 2 Portugal HD"
-      ],
-      "sources": [
-        "SportEventz"
-      ]
-    },
-    {
-      "time_local": "2025-08-29 21:00",
-      "time_display": "21:00",
-      "teams_display": "SS Virtus v Breidablik Kopavogur",
-      "competition": "Internationale Klubturniere, UEFA Conference League, Playoff Round",
-      "channels": [
-        "RTV San Marino HD"
+        "Dazn 1 Portugal HD",
+        "Arena Sport 2 Croatia",
+        "Arena Sport 2 Croatia HD",
+        "beIN Sports Max 9 France HD",
+        "Canal Plus Sport 2 Poland HD",
+        "Canal Plus Sport 4 Poland HD",
+        "Digi Sport 4 Romania",
+        "M.LaLiga",
+        "M.LaLiga HD",
+        "Max Sport 4 Bulgaria",
+        "Max Sport 4 Bulgaria HD",
+        "Nova Sport 5 Czechia HD",
+        "Prima Sport 3",
+        "Prima Sport 3 HD",
+        "S Sport Turkey",
+        "S Sport Turkey HD",
+        "Spiler 2 TV Hungary",
+        "SuperSport 2 Albania HD",
+        "TV2 Sport 1 Norway HD",
+        "TV2 Sport Premium Norway HD",
+        "Ziggo Sport 3 Netherlands"
       ],
       "sources": [
         "SportEventz"
