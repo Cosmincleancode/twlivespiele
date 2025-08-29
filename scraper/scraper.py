@@ -290,7 +290,7 @@ def liveonsat_url_for_day(d: date) -> str:
     dd, mm, yy = f"{d.day:02d}", f"{d.month:02d}", f"{d.year:04d}"
     return ("https://liveonsat.com/2day.php?"
             f"start_dd={dd}&start_mm={mm}&start_yyyy={yy}"
-            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")  # <-- end_yyyy (NOT start_yyyy)
+            f"&end_dd={dd}&end_mm={mm}&end_yyyy={yy}")
 
 def choose_best_time(box) -> str | None:
     """
@@ -423,7 +423,7 @@ def parse_liveonsat_soup(soup: BeautifulSoup, date_iso: str):
                     "time_display": time_str,
                     "home": home, "away": away,
                     "teams_display": f"{home} v {away}",
-                    "competition": comp,     # <— acum încercăm să o avem și din L-o-S
+                    "competition": comp,
                     "channels": highlight_first(channels)
                 })
             except Exception as box_error:
@@ -503,8 +503,8 @@ def fetch_liveonsat_html(d: date) -> BeautifulSoup:
             # Save the HTML for debugging
             open(os.path.join(WEB_DATA, "__liveonsat.html"), "wb").write(r.content)
             
-            # Parse with BeautifulSoup
-            soup = BeautifulSoup(r.text, "lxml")
+            # Parse with BeautifulSoup - use html.parser instead of lxml
+            soup = BeautifulSoup(r.text, "html.parser")
             
             # Check if the page seems valid (has expected elements)
             if not soup.select("div.blockfix") and not soup.select(".fix_text"):
@@ -523,77 +523,9 @@ def fetch_liveonsat_html(d: date) -> BeautifulSoup:
                 # Increase delay for next attempt
                 retry_delay *= 2
     
-    # If direct requests fail, try with Selenium as a last resort
-    log("All direct attempts failed. Trying Selenium...")
-    try:
-        return fetch_liveonsat_via_selenium(d)
-    except Exception as e:
-        log(f"Selenium attempt also failed: {e}")
-        # If Selenium also fails, return an empty soup rather than None
-        log("Creating empty fallback BeautifulSoup")
-        return BeautifulSoup("<html><body></body></html>", "lxml")
-
-def fetch_liveonsat_via_selenium(d: date) -> BeautifulSoup:
-    """Last resort: use Selenium to fetch LiveOnSat page."""
-    url = liveonsat_url_for_day(d)
-    log(f"liveonsat: Selenium fallback -> {url}")
-    
-    # Configure Chrome options for serverless environment
-    opts = Options()
-    opts.add_argument("--headless=new")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")  # Important for Docker/serverless
-    opts.add_argument("--disable-gpu")
-    opts.add_argument("--window-size=1366,900")
-    opts.add_argument("--disable-extensions")
-    
-    # Add random user agent
-    user_agents = [
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0'
-    ]
-    opts.add_argument(f"user-agent={random.choice(user_agents)}")
-    
-    try:
-        # For serverless environments, use a different approach to get Chrome
-        if os.environ.get('RENDER'):
-            log("Running in Render.com environment, using direct path")
-            # For Render.com, Chrome is pre-installed but needs direct path
-            chrome_driver_path = "/usr/bin/chromedriver"
-            service = Service(chrome_driver_path)
-        else:
-            # For local development
-            log("Running in local environment, using webdriver_manager")
-            service = Service(ChromeDriverManager().install())
-        
-        driver = webdriver.Chrome(service=service, options=opts)
-        
-        try:
-            driver.get(url)
-            time.sleep(7.0)  # Wait longer for JavaScript to execute
-            
-            # Scroll to ensure all content is loaded
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
-            time.sleep(2)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
-            
-            html = driver.page_source
-            content_length = len(html)
-            log(f"Selenium fetched {content_length} bytes")
-            
-            with open(os.path.join(WEB_DATA, "__liveonsat_selenium.html"),
-                     "w", encoding="utf-8", errors="ignore") as f:
-                f.write(html)
-            
-            return BeautifulSoup(html, "lxml")
-        finally:
-            driver.quit()
-    except Exception as e:
-        log(f"Error in Selenium: {e}")
-        log(traceback.format_exc())
-        return BeautifulSoup("<html><body></body></html>", "lxml")
+    # If all attempts fail, return an empty soup rather than trying Selenium
+    log("All direct attempts failed. LiveOnSat access blocked. Using empty soup.")
+    return BeautifulSoup("<html><body></body></html>", "html.parser")
 
 # =========================================================
 #                         MERGE
